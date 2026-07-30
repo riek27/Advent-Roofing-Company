@@ -245,6 +245,57 @@
         .mobile-link:hover {
             background: #f0f4ef;
         }
+
+        /* Mobile accordion */
+.mobile-accordion-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+    color: #1a3c2a;
+    border-radius: 0.75rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: background 0.15s;
+    text-align: left;
+}
+.mobile-accordion-btn:hover {
+    background: rgba(245, 245, 245, 0.6);
+}
+.accordion-arrow {
+    transition: transform 0.25s ease;
+}
+.mobile-accordion-btn.active .accordion-arrow {
+    transform: rotate(180deg);
+}
+.mobile-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+.mobile-accordion-content.open {
+    max-height: 300px;
+}
+.mobile-link-sub {
+    padding: 0.6rem 1rem 0.6rem 2rem;
+    font-weight: 400;
+    color: #4b5563;
+    border-radius: 0.75rem;
+    text-decoration: none;
+    transition: background 0.15s;
+}
+.mobile-link-sub:hover {
+    background: rgba(245, 245, 245, 0.6);
+    color: #0b7e4a;
+}
     </style>
 </head>
 <body>
@@ -333,29 +384,52 @@
         </div>
     </nav>
 
-    <!-- ================================================================
-    MOBILE MENU (separate from nav, outside the nav container)
-    ================================================================ -->
-    <div id="mobile-menu">
-        <div class="pt-20 px-6 pb-8">
-            <div class="flex flex-col gap-1">
-                <a href="#home" class="mobile-link">Home</a>
-                <a href="#about" class="mobile-link">About</a>
-                <a href="#board-leadership" class="mobile-link pl-6">Board & Leadership</a>
-                <p class="px-4 py-2 text-xs font-semibold text-gray-400 uppercase mt-2">Programs</p>
-                <a href="#programs" class="mobile-link pl-6">Child Empowerment</a>
-                <a href="#featured" class="mobile-link pl-6">Empower Farmers SS</a>
-                <a href="#impact" class="mobile-link">Impact</a>
-                <a href="#news" class="mobile-link">News</a>
-                <a href="#blog" class="mobile-link">Blog</a>
-                <a href="#resources" class="mobile-link">Resources</a>
-                <a href="#contact" class="mobile-link">Contact</a>
+    <div id="mobile-menu" class="mobile-menu lg:hidden fixed top-0 right-0 h-full w-72 bg-white shadow-2xl z-50 overflow-y-auto">
+    <div class="pt-20 px-6 pb-8">
+        <div class="flex flex-col gap-1">
+
+            <!-- Home -->
+            <a href="#home" class="mobile-link block px-4 py-3 font-medium text-deep-forest hover:bg-soft-bg rounded-xl">Home</a>
+
+            <!-- About Accordion -->
+            <button class="mobile-accordion-btn" data-target="aboutMobile">
+                About
+                <svg class="accordion-arrow w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </button>
+            <div id="aboutMobile" class="mobile-accordion-content">
+                <a href="#about" class="mobile-link-sub block px-4 py-2.5 text-sm text-gray-700 hover:bg-soft-bg rounded-xl pl-6">Our Story</a>
+                <a href="#board-leadership" class="mobile-link-sub block px-4 py-2.5 text-sm text-gray-700 hover:bg-soft-bg rounded-xl pl-6">Board & Leadership</a>
+                <a href="#partners" class="mobile-link-sub block px-4 py-2.5 text-sm text-gray-700 hover:bg-soft-bg rounded-xl pl-6">Partners</a>
             </div>
-            <div class="mt-6">
-                <a href="#donate" class="btn-gold-pulse block text-center px-5 py-3 bg-warm-gold text-white font-semibold rounded-full">Donate Now</a>
+
+            <!-- Programs Accordion -->
+            <button class="mobile-accordion-btn" data-target="programsMobile">
+                Programs
+                <svg class="accordion-arrow w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </button>
+            <div id="programsMobile" class="mobile-accordion-content">
+                <a href="#programs" class="mobile-link-sub block px-4 py-2.5 text-sm text-gray-700 hover:bg-soft-bg rounded-xl pl-6">Child Empowerment</a>
+                <a href="#programs" class="mobile-link-sub block px-4 py-2.5 text-sm text-gray-700 hover:bg-soft-bg rounded-xl pl-6">Education Support</a>
+                <a href="#featured" class="mobile-link-sub block px-4 py-2.5 text-sm text-gray-700 hover:bg-soft-bg rounded-xl pl-6">Empower Farmers SS</a>
+                <a href="#programs" class="mobile-link-sub block px-4 py-2.5 text-sm text-gray-700 hover:bg-soft-bg rounded-xl pl-6">Youth Development</a>
+                <a href="#programs" class="mobile-link-sub block px-4 py-2.5 text-sm text-gray-700 hover:bg-soft-bg rounded-xl pl-6">Food Security</a>
             </div>
+
+            <!-- Other links -->
+            <a href="#impact" class="mobile-link block px-4 py-3 font-medium text-gray-700 hover:bg-soft-bg rounded-xl">Impact</a>
+            <a href="#news" class="mobile-link block px-4 py-3 font-medium text-gray-700 hover:bg-soft-bg rounded-xl">News</a>
+            <a href="#blog" class="mobile-link block px-4 py-3 font-medium text-gray-700 hover:bg-soft-bg rounded-xl">Blog</a>
+            <a href="#resources" class="mobile-link block px-4 py-3 font-medium text-gray-700 hover:bg-soft-bg rounded-xl">Resources</a>
+            <a href="#contact" class="mobile-link block px-4 py-3 font-medium text-gray-700 hover:bg-soft-bg rounded-xl">Contact</a>
         </div>
+
+        <div class="mt-6"><a href="#donate" class="btn-gold-pulse block text-center px-5 py-3 bg-warm-gold text-white font-semibold rounded-full">Donate Now</a></div>
     </div>
+</div>
 
     <!-- Mobile Overlay -->
     <div id="mobile-overlay"></div>
@@ -1026,6 +1100,37 @@
                     openMenu();
                 }
             }
+
+            // Mobile accordion
+document.querySelectorAll('.mobile-accordion-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const targetId = this.getAttribute('data-target');
+        const content = document.getElementById(targetId);
+        if (!content) return;
+
+        // Close other open accordions
+        const parent = this.closest('.flex.flex-col');
+        if (parent) {
+            parent.querySelectorAll('.mobile-accordion-content.open').forEach(el => {
+                if (el.id !== targetId) {
+                    el.classList.remove('open');
+                    el.previousElementSibling?.classList.remove('active');
+                }
+            });
+        }
+
+        // Toggle this one
+        const isOpen = content.classList.contains('open');
+        if (isOpen) {
+            content.classList.remove('open');
+            this.classList.remove('active');
+        } else {
+            content.classList.add('open');
+            this.classList.add('active');
+        }
+    });
+});
 
             // ─── Event listeners ────────────────────────────────────────
             toggleBtn.addEventListener('click', function(e) {
