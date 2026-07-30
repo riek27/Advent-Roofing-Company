@@ -85,16 +85,28 @@
         .btn-gold-pulse::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 60%); opacity: 0; transition: opacity 0.4s; }
         .btn-gold-pulse:hover::after { opacity: 1; }
 
-        /* 🔧 FIXED mobile menu styles */
-        .mobile-menu {
-            transform: translateX(100%) !important;
-            transition: transform 0.4s ease;
-            will-change: transform;
-        }
-        .mobile-menu.open {
-            transform: translateX(0) !important;
-        }
+        /* ===== MOBILE MENU FIX ===== */
+#mobile-menu.mobile-menu {
+    display: block !important;
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    height: 100% !important;
+    width: 18rem !important;
+    background: white !important;
+    transform: translateX(100%) !important;
+    transition: transform 0.4s ease !important;
+    will-change: transform !important;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.15) !important;
+    z-index: 60 !important;
+    overflow-y: auto !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
 
+#mobile-menu.mobile-menu.open {
+    transform: translateX(0) !important;
+}
         ::selection { background: #159957; color: #fff; }
     </style>
 </head>
