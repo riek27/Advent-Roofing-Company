@@ -3,2682 +3,633 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ana Junubi General Construction Company | Luxury Interior Designs</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="EmpowerKids-South Sudan - Empowering children, youth, and communities to create a brighter future for South Sudan through education, agriculture, and sustainable development.">
+    <title>EmpowerKids-South Sudan | Creating a Brighter Future</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind via CDN -->
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-forest': '#0B3D2E',
+                        'emerald-green': '#159957',
+                        'warm-gold': '#D4A017',
+                        'soft-bg': '#F5F7F2',
+                        'dark-section': '#06261D',
+                        'footer-dark': '#041B14',
+                    },
+                    fontFamily: {
+                        'display': ['"Playfair Display"', 'Georgia', 'serif'],
+                        'body': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        '4xl': '2rem',
+                    },
+                }
+            }
+        }
+    </script>
+
     <style>
-        /* ========== CSS VARIABLES ========== */
-        :root {
-            --primary: #0a1f3f;
-            --primary-dark: #06152a;
-            --primary-light: #132d5e;
-            --gold: #c9a84c;
-            --gold-light: #e0c572;
-            --gold-dark: #a8882e;
-            --white: #ffffff;
-            --off-white: #f8f6f1;
-            --gray-light: #e8e6e1;
-            --gray: #9a9a9a;
-            --dark: #1a1a1a;
-            --text: #333333;
-            --shadow: 0 10px 40px rgba(0,0,0,0.12);
-            --shadow-lg: 0 25px 60px rgba(0,0,0,0.2);
-            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        /* ========== RESET & BASE ========== */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text);
-            line-height: 1.7;
-            overflow-x: hidden;
-            background: var(--white);
-        }
-
-        h1, h2, h3, h4, h5 {
-            font-family: 'Playfair Display', serif;
-            line-height: 1.3;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* ========== PRELOADER ========== */
-        .preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 99999;
-            transition: opacity 0.6s ease, visibility 0.6s ease;
-        }
-
-        .preloader.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .preloader-inner {
-            text-align: center;
-        }
-
-        .preloader-inner h2 {
-            color: var(--gold);
-            font-size: 1.8rem;
-            letter-spacing: 3px;
-            animation: pulse 1.5s ease infinite;
-        }
-
-        .preloader-bar {
-            width: 200px;
-            height: 3px;
-            background: rgba(255,255,255,0.1);
-            margin: 20px auto 0;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .preloader-bar::after {
-            content: '';
-            display: block;
-            width: 40%;
-            height: 100%;
-            background: var(--gold);
-            border-radius: 10px;
-            animation: loading 1.2s ease infinite;
-        }
-
-        @keyframes loading {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(350%); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        /* ========== TOP BAR ========== */
-        .top-bar {
-            background: var(--primary-dark);
-            padding: 10px 0;
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.7);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .top-bar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .top-bar-left {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-
-        .top-bar-left a {
-            color: rgba(255,255,255,0.7);
-            transition: var(--transition);
-        }
-
-        .top-bar-left a:hover {
-            color: var(--gold);
-        }
-
-        .top-bar-left i {
-            color: var(--gold);
-            margin-right: 8px;
-        }
-
-        .top-bar-right {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .top-bar-right a {
-            color: rgba(255,255,255,0.7);
-            transition: var(--transition);
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .top-bar-right a:hover {
-            background: var(--gold);
-            color: var(--primary);
-            border-color: var(--gold);
-        }
-
-        /* ========== NAVBAR ========== */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 9999;
-            transition: var(--transition);
-            padding: 0;
-        }
-
-        .navbar.scrolled {
-            background: rgba(10, 31, 63, 0.97);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
-        }
-
-        .navbar.scrolled .top-bar {
-            display: none;
-        }
-
-        .nav-main {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 40px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            color: var(--primary);
-            font-weight: 800;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .logo-text h1 {
-            font-size: 1.1rem;
-            color: var(--white);
-            font-weight: 700;
-            letter-spacing: 1px;
-            line-height: 1.2;
-        }
-
-        .logo-text span {
-            font-size: 0.7rem;
-            color: var(--gold);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            list-style: none;
-        }
-
-        .nav-links > li {
-            position: relative;
-        }
-
-        .nav-links > li > a {
-            color: rgba(255,255,255,0.85);
-            padding: 12px 20px;
-            font-size: 0.92rem;
-            font-weight: 500;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            border-radius: 8px;
-            letter-spacing: 0.3px;
-        }
-
-        .nav-links > li > a:hover,
-        .nav-links > li > a.active {
-            color: var(--gold);
-            background: rgba(255,255,255,0.05);
-        }
-
-        .nav-links > li > a .arrow {
-            font-size: 0.65rem;
-            transition: transform 0.3s ease;
-        }
-
-        /* Dropdown */
-        .dropdown {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%) translateY(15px);
-            background: var(--white);
-            min-width: 320px;
-            border-radius: 16px;
-            padding: 15px;
-            box-shadow: var(--shadow-lg);
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-            pointer-events: none;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .dropdown::before {
-            content: '';
-            position: absolute;
-            top: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 16px;
-            height: 16px;
-            background: var(--white);
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-        }
-
-        .nav-links > li:hover .dropdown {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0);
-            pointer-events: all;
-        }
-
-        .nav-links > li:hover > a .arrow {
-            transform: rotate(180deg);
-        }
-
-        .dropdown-item {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 12px 16px;
-            border-radius: 12px;
-            transition: var(--transition);
-            color: var(--text);
-        }
-
-        .dropdown-item:hover {
-            background: var(--off-white);
-            color: var(--primary);
-        }
-
-        .dropdown-item i {
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: var(--gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            font-size: 0.85rem;
-            flex-shrink: 0;
-        }
-
-        .dropdown-item-text h4 {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .dropdown-item-text p {
-            font-size: 0.75rem;
-            color: var(--gray);
-            margin-top: 2px;
-        }
-
-        .nav-contact {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .nav-phone {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: rgba(255,255,255,0.85);
-            font-size: 0.88rem;
-            font-weight: 500;
-        }
-
-        .nav-phone i {
-            color: var(--gold);
-        }
-
-        .btn-quote {
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            color: var(--primary) !important;
-            padding: 12px 28px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.88rem;
-            letter-spacing: 0.5px;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
-        .btn-quote:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(201, 168, 76, 0.4);
-        }
-
-        /* Mobile Menu Toggle */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 6px;
-            cursor: pointer;
-            padding: 5px;
-            z-index: 100;
-        }
-
-        .menu-toggle span {
-            width: 28px;
-            height: 2.5px;
-            background: var(--white);
-            border-radius: 10px;
-            transition: var(--transition);
-        }
-
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
-        }
-
-        /* ========== HERO SECTION ========== */
-        .hero {
-            position: relative;
-            height: 100vh;
-            min-height: 700px;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-        }
-
-        .hero-bg img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(6, 21, 42, 0.92) 0%, rgba(10, 31, 63, 0.75) 50%, rgba(19, 45, 94, 0.6) 100%);
-            z-index: -1;
-        }
-
-        .hero-particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--gold);
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: float-particle 8s ease-in-out infinite;
-        }
-
-        .particle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
-        .particle:nth-child(2) { top: 60%; left: 80%; animation-delay: 2s; }
-        .particle:nth-child(3) { top: 40%; left: 30%; animation-delay: 4s; }
-        .particle:nth-child(4) { top: 80%; left: 60%; animation-delay: 1s; }
-        .particle:nth-child(5) { top: 10%; left: 70%; animation-delay: 3s; }
-        .particle:nth-child(6) { top: 50%; left: 50%; animation-delay: 5s; }
-
-        @keyframes float-particle {
-            0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
-            50% { transform: translateY(-30px) scale(1.5); opacity: 0.6; }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(201, 168, 76, 0.15);
-            border: 1px solid rgba(201, 168, 76, 0.3);
-            padding: 10px 24px;
-            border-radius: 50px;
-            margin-bottom: 30px;
-            animation: fadeInUp 0.8s ease;
-        }
-
-        .hero-badge i {
-            color: var(--gold);
-        }
-
-        .hero-badge span {
-            color: var(--gold-light);
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .hero h2 {
-            font-size: 4.2rem;
-            color: var(--white);
-            font-weight: 800;
-            line-height: 1.15;
-            margin-bottom: 20px;
-            animation: fadeInUp 0.8s ease 0.2s both;
-        }
-
-        .hero h2 .highlight {
-            color: var(--gold);
-            position: relative;
-        }
-
-        .hero h2 .highlight::after {
-            content: '';
-            position: absolute;
-            bottom: 5px;
-            left: 0;
-            width: 100%;
-            height: 8px;
-            background: rgba(201, 168, 76, 0.2);
-            border-radius: 10px;
-        }
-
-        .hero p {
-            font-size: 1.15rem;
-            color: rgba(255,255,255,0.75);
-            margin-bottom: 40px;
-            line-height: 1.8;
-            max-width: 600px;
-            animation: fadeInUp 0.8s ease 0.4s both;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease 0.6s both;
-        }
-
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 36px;
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            color: var(--primary) !important;
-            font-weight: 700;
-            font-size: 1rem;
-            border-radius: 50px;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            letter-spacing: 0.5px;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(201, 168, 76, 0.4);
-        }
-
-        .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 36px;
-            background: transparent;
-            color: var(--white) !important;
-            font-weight: 600;
-            font-size: 1rem;
-            border-radius: 50px;
-            transition: var(--transition);
-            border: 2px solid rgba(255,255,255,0.3);
-            cursor: pointer;
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: var(--white);
-            transform: translateY(-3px);
-        }
-
-        .hero-scroll {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            animation: bounce 2s ease infinite;
-        }
-
-        .hero-scroll a {
-            color: rgba(255,255,255,0.5);
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .hero-scroll i {
-            font-size: 1.2rem;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-10px); }
-        }
-
-        /* ========== STATS BAR ========== */
-        .stats-bar {
-            background: var(--white);
-            padding: 0;
-            position: relative;
-            z-index: 10;
-            margin-top: -60px;
-        }
-
-        .stats-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            background: var(--white);
-            border-radius: 20px;
-            box-shadow: var(--shadow-lg);
-            overflow: hidden;
-        }
-
-        .stat-item {
-            padding: 40px 30px;
-            text-align: center;
-            position: relative;
-            transition: var(--transition);
-        }
-
-        .stat-item:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 25%;
-            height: 50%;
-            width: 1px;
-            background: var(--gray-light);
-        }
-
-        .stat-item:hover {
-            background: var(--off-white);
-        }
-
-        .stat-item i {
-            font-size: 2rem;
-            color: var(--gold);
-            margin-bottom: 15px;
-        }
-
-        .stat-item h3 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            font-weight: 800;
-            margin-bottom: 5px;
-        }
-
-        .stat-item p {
-            font-size: 0.9rem;
-            color: var(--gray);
-            font-weight: 500;
-        }
-
-        /* ========== SECTION STYLES ========== */
-        .section {
-            padding: 100px 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--gold);
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-        }
-
-        .section-label::before,
-        .section-label::after {
-            content: '';
-            width: 30px;
-            height: 2px;
-            background: var(--gold);
-        }
-
-        .section-header h2 {
-            font-size: 2.8rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .section-header p {
-            font-size: 1.1rem;
-            color: var(--gray);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* ========== ABOUT SECTION ========== */
-        .about {
-            background: var(--white);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .about-images {
-            position: relative;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .about-img {
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            position: relative;
-        }
-
-        .about-img img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .about-img:hover img {
-            transform: scale(1.05);
-        }
-
-        .about-img.large {
-            grid-row: span 2;
-        }
-
-        .about-img.large img {
-            height: 100%;
-            min-height: 520px;
-        }
-
-        .about-experience {
-            position: absolute;
-            bottom: -20px;
-            right: -20px;
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            color: var(--primary);
-            padding: 25px 30px;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 15px 40px rgba(201, 168, 76, 0.3);
-            z-index: 5;
-        }
-
-        .about-experience h3 {
-            font-size: 2.5rem;
-            font-weight: 800;
-        }
-
-        .about-experience p {
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .about-content .section-label {
-            justify-content: flex-start;
-        }
-
-        .about-content .section-label::before {
-            display: none;
-        }
-
-        .about-content h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .about-content > p {
-            color: var(--text);
-            margin-bottom: 20px;
-            font-size: 1.05rem;
-        }
-
-        .about-features {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin: 30px 0;
-        }
-
-        .about-feature {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
-            background: var(--off-white);
-            border-radius: 12px;
-            transition: var(--transition);
-        }
-
-        .about-feature:hover {
-            background: var(--gold);
-            color: var(--primary);
-        }
-
-        .about-feature i {
-            color: var(--gold);
-            font-size: 1.1rem;
-            flex-shrink: 0;
-        }
-
-        .about-feature:hover i {
-            color: var(--primary);
-        }
-
-        .about-feature span {
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .about-certs {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 1px solid var(--gray-light);
-        }
-
-        .cert-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .cert-icon {
-            width: 45px;
-            height: 45px;
-            background: var(--primary);
-            color: var(--gold);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-        }
-
-        .cert-text h4 {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .cert-text p {
-            font-size: 0.75rem;
-            color: var(--gray);
-        }
-
-        /* ========== SERVICES SECTION ========== */
-        .services {
-            background: var(--off-white);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 40px 30px;
-            position: relative;
-            overflow: hidden;
-            transition: var(--transition);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            border: 1px solid rgba(0,0,0,0.03);
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--gold), var(--gold-dark));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .service-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 25px;
-            transition: var(--transition);
-        }
-
-        .service-icon i {
-            font-size: 1.6rem;
-            color: var(--gold);
-        }
-
-        .service-card:hover .service-icon {
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            transform: rotate(-5deg) scale(1.1);
-        }
-
-        .service-card:hover .service-icon i {
-            color: var(--primary);
-        }
-
-        .service-card h3 {
-            font-size: 1.3rem;
-            color: var(--primary);
-            margin-bottom: 12px;
-            font-weight: 700;
-        }
-
-        .service-card p {
-            color: var(--gray);
-            font-size: 0.95rem;
-            margin-bottom: 25px;
-            line-height: 1.7;
-        }
-
-        .service-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--gold-dark);
-            font-weight: 700;
-            font-size: 0.9rem;
-            transition: var(--transition);
-            padding: 10px 0;
-        }
-
-        .service-btn i {
-            transition: transform 0.3s ease;
-        }
-
-        .service-btn:hover {
-            color: var(--primary);
-        }
-
-        .service-btn:hover i {
-            transform: translateX(5px);
-        }
-
-        /* ========== WHY CHOOSE US ========== */
-        .why-us {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .why-us::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(201, 168, 76, 0.08) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .why-us .section-label {
-            color: var(--gold-light);
-        }
-
-        .why-us .section-label::before,
-        .why-us .section-label::after {
-            background: var(--gold-light);
-        }
-
-        .why-us .section-header h2 {
-            color: var(--white);
-        }
-
-        .why-us .section-header p {
-            color: rgba(255,255,255,0.6);
-        }
-
-        .why-us-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .why-item {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 20px;
-            padding: 35px 25px;
-            text-align: center;
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
-        }
-
-        .why-item:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-8px);
-            border-color: rgba(201, 168, 76, 0.3);
-        }
-
-        .why-item-icon {
-            width: 65px;
-            height: 65px;
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 1.4rem;
-            color: var(--primary);
-            transition: var(--transition);
-        }
-
-        .why-item:hover .why-item-icon {
-            transform: scale(1.1) rotate(10deg);
-        }
-
-        .why-item h3 {
-            color: var(--white);
-            font-size: 1.15rem;
-            margin-bottom: 10px;
-            font-weight: 600;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .why-item p {
-            color: rgba(255,255,255,0.55);
-            font-size: 0.9rem;
-        }
-
-        /* ========== PROJECTS SECTION ========== */
-        .projects {
-            background: var(--white);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .project-card {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            height: 350px;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        }
-
-        .project-card:first-child {
-            grid-column: span 2;
-            height: 400px;
-        }
-
-        .project-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .project-card:hover img {
-            transform: scale(1.1);
-        }
-
-        .project-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 40px 25px 25px;
-            background: linear-gradient(to top, rgba(6, 21, 42, 0.95) 0%, transparent 100%);
-            transform: translateY(30px);
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .project-card:hover .project-overlay {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .project-overlay span {
-            color: var(--gold);
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .project-overlay h3 {
-            color: var(--white);
-            font-size: 1.2rem;
-            margin-top: 5px;
-        }
-
-        /* ========== COMMITMENT SECTION ========== */
-        .commitment {
-            background: var(--off-white);
-            padding: 80px 0;
-        }
-
-        .commitment-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-        }
-
-        .commitment-item {
-            text-align: center;
-            padding: 30px 20px;
-        }
-
-        .commitment-item i {
-            font-size: 2.5rem;
-            color: var(--gold);
-            margin-bottom: 15px;
-        }
-
-        .commitment-item h3 {
-            font-size: 1rem;
-            color: var(--primary);
-            font-weight: 700;
-            margin-bottom: 8px;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .commitment-item p {
-            font-size: 0.88rem;
-            color: var(--gray);
-        }
-
-        /* ========== CONTACT SECTION ========== */
-        .contact {
-            background: var(--white);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 50px;
-        }
-
-        .contact-info {
-            padding-right: 30px;
-        }
-
-        .contact-info .section-label {
-            justify-content: flex-start;
-        }
-
-        .contact-info .section-label::before {
-            display: none;
-        }
-
-        .contact-info h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-
-        .contact-info > p {
-            color: var(--gray);
-            margin-bottom: 35px;
-            font-size: 1.05rem;
-        }
-
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .contact-detail {
-            display: flex;
-            align-items: flex-start;
-            gap: 18px;
-        }
-
-        .contact-detail-icon {
-            width: 55px;
-            height: 55px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .contact-detail-icon i {
-            color: var(--gold);
-            font-size: 1.2rem;
-        }
-
-        .contact-detail-text h4 {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .contact-detail-text p {
-            color: var(--text);
-            font-size: 0.95rem;
-        }
-
-        .contact-detail-text a {
-            color: var(--gold-dark);
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .contact-detail-text a:hover {
-            color: var(--primary);
-        }
-
-        .contact-social {
-            display: flex;
-            gap: 12px;
-            margin-top: 30px;
-        }
-
-        .contact-social a {
-            width: 45px;
-            height: 45px;
-            background: var(--off-white);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            transition: var(--transition);
-            font-size: 1.1rem;
-        }
-
-        .contact-social a:hover {
-            background: var(--gold);
-            color: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        .contact-form-wrapper {
-            background: var(--off-white);
-            border-radius: 24px;
-            padding: 40px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-        }
-
-        .contact-form-wrapper h3 {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 25px;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .form-group.full {
-            grid-column: span 2;
-        }
-
-        .form-group label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            padding: 14px 18px;
-            border: 2px solid var(--gray-light);
-            border-radius: 12px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            transition: var(--transition);
-            background: var(--white);
-            outline: none;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            border-color: var(--gold);
-            box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.1);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .form-submit {
-            margin-top: 10px;
-        }
-
-        .form-submit .btn-primary {
-            width: 100%;
-            justify-content: center;
-            padding: 16px;
-            font-size: 1rem;
-        }
-
-        /* ========== FOOTER ========== */
-        .footer {
-            background: var(--primary-dark);
-            color: rgba(255,255,255,0.7);
-            padding: 80px 0 0;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
-            gap: 40px;
-            padding-bottom: 60px;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
-
-        .footer-about .logo {
-            margin-bottom: 20px;
-        }
-
-        .footer-about p {
-            font-size: 0.95rem;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .footer h4 {
-            color: var(--white);
-            font-size: 1.1rem;
-            margin-bottom: 25px;
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-        }
-
-        .footer-links {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.6);
-            transition: var(--transition);
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .footer-links a::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            background: var(--gold);
-            border-radius: 50%;
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--gold);
-            padding-left: 5px;
-        }
-
-        .footer-links a:hover::before {
-            opacity: 1;
-        }
-
-        .footer-contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 18px;
-        }
-
-        .footer-contact-item i {
-            color: var(--gold);
-            margin-top: 4px;
-            flex-shrink: 0;
-        }
-
-        .footer-contact-item p {
-            font-size: 0.95rem;
-        }
-
-        .footer-contact-item a {
-            color: var(--gold-light);
-            transition: var(--transition);
-        }
-
-        .footer-contact-item a:hover {
-            color: var(--gold);
-        }
-
-        .footer-bottom {
-            padding: 25px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .footer-bottom p {
-            font-size: 0.85rem;
-        }
-
-        .footer-bottom-links {
-            display: flex;
-            gap: 25px;
-        }
-
-        .footer-bottom-links a {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.5);
-            transition: var(--transition);
-        }
-
-        .footer-bottom-links a:hover {
-            color: var(--gold);
-        }
-
-        /* ========== WHATSAPP FLOAT ========== */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 999;
-            width: 60px;
-            height: 60px;
-            background: #25d366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.6rem;
-            box-shadow: 0 5px 25px rgba(37, 211, 102, 0.4);
-            transition: var(--transition);
-            animation: whatsapp-pulse 2s ease infinite;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 35px rgba(37, 211, 102, 0.5);
-        }
-
-        @keyframes whatsapp-pulse {
-            0%, 100% { box-shadow: 0 5px 25px rgba(37, 211, 102, 0.4); }
-            50% { box-shadow: 0 5px 25px rgba(37, 211, 102, 0.7), 0 0 0 15px rgba(37, 211, 102, 0.1); }
-        }
-
-        /* ========== BACK TO TOP ========== */
-        .back-to-top {
-            position: fixed;
-            bottom: 100px;
-            right: 35px;
-            z-index: 999;
-            width: 45px;
-            height: 45px;
-            background: var(--primary);
-            color: var(--gold);
-            border: none;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            background: var(--gold);
-            color: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        /* ========== RESPONSIVE ========== */
-        @media (max-width: 1024px) {
-            .hero h2 {
-                font-size: 3rem;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .projects-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .project-card:first-child {
-                grid-column: span 2;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .top-bar {
-                display: none;
-            }
-
-            .nav-main {
-                padding: 12px 20px;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 300px;
-                height: 100vh;
-                background: var(--primary-dark);
-                flex-direction: column;
-                padding: 100px 30px 30px;
-                gap: 0;
-                transition: right 0.4s ease;
-                overflow-y: auto;
-                z-index: 99;
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .nav-links > li > a {
-                padding: 15px 10px;
-                width: 100%;
-                justify-content: space-between;
-            }
-
-            .dropdown {
-                position: static;
-                transform: none;
-                background: rgba(255,255,255,0.05);
-                box-shadow: none;
-                border: none;
-                border-radius: 12px;
-                padding: 10px;
-                display: none;
-            }
-
-            .dropdown::before {
-                display: none;
-            }
-
-            .dropdown.active {
-                display: block;
-                opacity: 1;
-                visibility: visible;
-                pointer-events: all;
-            }
-
-            .dropdown-item {
-                color: rgba(255,255,255,0.8);
-            }
-
-            .dropdown-item:hover {
-                background: rgba(255,255,255,0.05);
-                color: var(--gold);
-            }
-
-            .dropdown-item i {
-                background: rgba(201, 168, 76, 0.2);
-            }
-
-            .nav-contact {
-                display: none;
-            }
-
-            .hero h2 {
-                font-size: 2.2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .hero-buttons .btn-primary,
-            .hero-buttons .btn-secondary {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .stats-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .stat-item:nth-child(2)::after {
-                display: none;
-            }
-
-            .section {
-                padding: 60px 0;
-            }
-
-            .section-header h2 {
-                font-size: 2rem;
-            }
-
-            .about-content h2 {
-                font-size: 1.8rem;
-            }
-
-            .about-features {
-                grid-template-columns: 1fr;
-            }
-
-            .about-certs {
-                flex-direction: column;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .project-card:first-child {
-                grid-column: span 1;
-            }
-
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .form-group.full {
-                grid-column: span 1;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-form-wrapper {
-                padding: 25px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h2 {
-                font-size: 1.8rem;
-            }
-
-            .stat-item h3 {
-                font-size: 1.8rem;
-            }
-
-            .about-images {
-                grid-template-columns: 1fr;
-            }
-
-            .about-img.large img {
-                min-height: 300px;
-            }
-
-            .about-img img {
-                height: 200px;
-            }
-        }
-
-        /* ========== ANIMATIONS ========== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Mobile overlay */
-        .mobile-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 98;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-        }
-
-        .mobile-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
+        :root { --deep-forest: #0B3D2E; --emerald-green: #159957; --warm-gold: #D4A017; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', system-ui, sans-serif; }
+
+        .glass-nav { background: rgba(255,255,255,0.82); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(255,255,255,0.6); }
+        .glass-nav.scrolled { background: rgba(255,255,255,0.94); box-shadow: 0 4px 30px rgba(0,0,0,0.08); }
+        .hero-overlay { background: linear-gradient(135deg, rgba(6,38,29,0.88) 0%, rgba(6,38,29,0.65) 40%, rgba(11,61,46,0.45) 70%, rgba(6,38,29,0.55) 100%); }
+
+        .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94), transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94); }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        .fade-up-delay-1 { transition-delay: 0.1s; } .fade-up-delay-2 { transition-delay: 0.2s; } .fade-up-delay-3 { transition-delay: 0.3s; } .fade-up-delay-4 { transition-delay: 0.4s; }
+
+        /* Footer specific styles */
+.footer-link {
+    position: relative;
+    transition: color 0.3s;
+}
+.footer-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 1px;
+    background: var(--warm-gold);
+    transition: width 0.3s;
+}
+.footer-link:hover::after {
+    width: 100%;
+}
+.social-icon {
+    transition: background-color 0.3s, transform 0.3s;
+}
+.social-icon:hover {
+    transform: translateY(-3px);
+}
+
+        .card-hover { transition: transform 0.35s ease, box-shadow 0.35s ease; }
+        .card-hover:hover { transform: translateY(-8px); box-shadow: 0 28px 55px rgba(0,0,0,0.12), 0 10px 20px rgba(0,0,0,0.06); }
+        .image-zoom-wrapper { overflow: hidden; }
+        .image-zoom-wrapper img { transition: transform 0.6s ease; }
+        .image-zoom-wrapper:hover img { transform: scale(1.08); }
+        .btn-gold-pulse { position: relative; overflow: hidden; }
+        .btn-gold-pulse::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 60%); opacity: 0; transition: opacity 0.4s; }
+        .btn-gold-pulse:hover::after { opacity: 1; }
+        .mobile-menu { transform: translateX(100%); transition: transform 0.4s ease; }
+        .mobile-menu.open { transform: translateX(0); }
+        ::selection { background: #159957; color: #fff; }
     </style>
 </head>
-<body>
+<body class="bg-white text-gray-800 antialiased">
 
-    <!-- Preloader -->
-    <div class="preloader" id="preloader">
-        <div class="preloader-inner">
-            <h2>ANA JUNUBI</h2>
-            <div class="preloader-bar"></div>
-        </div>
-    </div>
-
-    <!-- WhatsApp Float -->
-    <a href="https://wa.me/211980822822" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- Back to Top -->
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">
-        <i class="fas fa-chevron-up"></i>
-    </button>
-
-    <!-- Mobile Overlay -->
-    <div class="mobile-overlay" id="mobileOverlay"></div>
-
-    <!-- Navbar -->
-    <nav class="navbar" id="navbar">
-        <!-- Top Bar -->
-        <div class="top-bar">
-            <div class="container">
-                <div class="top-bar-left">
-                    <a href="tel:+211980822822"><i class="fas fa-phone-alt"></i> +211 980 822 822</a>
-                    <a href="#"><i class="fas fa-map-marker-alt"></i> Juba, South Sudan</a>
-                    <a href="#"><i class="fas fa-clock"></i> Open Now</a>
-                </div>
-                <div class="top-bar-right">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="https://wa.me/211980822822" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Main Nav -->
-        <div class="nav-main">
-            <a href="#home" class="logo">
-                <div class="logo-icon">AJ</div>
-                <div class="logo-text">
-                    <h1>Ana Junubi</h1>
-                    <span>General Construction</span>
-                </div>
-            </a>
-
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li>
-                    <a href="#services">Services <i class="fas fa-chevron-down arrow"></i></a>
-                    <div class="dropdown" id="dropdown">
-                        <a href="#services" class="dropdown-item">
-                            <i class="fas fa-couch"></i>
-                            <div class="dropdown-item-text">
-                                <h4>Luxury Interior Design</h4>
-                                <p>Premium space planning & design</p>
-                            </div>
-                        </a>
-                        <a href="#services" class="dropdown-item">
-                            <i class="fas fa-paint-roller"></i>
-                            <div class="dropdown-item-text">
-                                <h4>Interior & Exterior Painting</h4>
-                                <p>Professional finishing & coatings</p>
-                            </div>
-                        </a>
-                        <a href="#services" class="dropdown-item">
-                            <i class="fas fa-home"></i>
-                            <div class="dropdown-item-text">
-                                <h4>Residential Construction</h4>
-                                <p>Custom homes & villas</p>
-                            </div>
-                        </a>
-                        <a href="#services" class="dropdown-item">
-                            <i class="fas fa-building"></i>
-                            <div class="dropdown-item-text">
-                                <h4>Commercial Projects</h4>
-                                <p>Offices, retail & more</p>
-                            </div>
-                        </a>
-                        <a href="#services" class="dropdown-item">
-                            <i class="fas fa-tools"></i>
-                            <div class="dropdown-item-text">
-                                <h4>Renovation & Remodeling</h4>
-                                <p>Transform your existing space</p>
-                            </div>
-                        </a>
-                        <a href="#services" class="dropdown-item">
-                            <i class="fas fa-hard-hat"></i>
-                            <div class="dropdown-item-text">
-                                <h4>General Construction</h4>
-                                <p>Complete building solutions</p>
-                            </div>
-                        </a>
-                        <a href="#services" class="dropdown-item">
-                            <i class="fas fa-border-all"></i>
-                            <div class="dropdown-item-text">
-                                <h4>Ceiling & Decorative Finishing</h4>
-                                <p>Elegant ceiling designs</p>
-                            </div>
-                        </a>
-                        <a href="#services" class="dropdown-item">
-                            <i class="fas fa-fill-drip"></i>
-                            <div class="dropdown-item-text">
-                                <h4>Wall Design & Finishing</h4>
-                                <p>Modern wall surfaces</p>
-                            </div>
-                        </a>
-                        <a href="#services" class="dropdown-item">
-                            <i class="fas fa-th-large"></i>
-                            <div class="dropdown-item-text">
-                                <h4>Flooring Installation</h4>
-                                <p>Premium flooring solutions</p>
-                            </div>
-                        </a>
-                        <a href="#services" class="dropdown-item">
-                            <i class="fas fa-magic"></i>
-                            <div class="dropdown-item-text">
-                                <h4>Modern Space Transformation</h4>
-                                <p>Complete space makeovers</p>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-
-            <div class="nav-contact">
-                <a href="tel:+211980822822" class="nav-phone">
-                    <i class="fas fa-phone-alt"></i>
-                    +211 980 822 822
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav id="navbar" class="glass-nav fixed top-0 left-0 w-full z-50 transition-all duration-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <a href="#home" class="flex items-center gap-2 flex-shrink-0">
+                    <div class="w-9 h-9 bg-deep-forest rounded-full flex items-center justify-center"><span class="text-white font-display font-bold text-lg">EK</span></div>
+                    <span class="font-display font-semibold text-deep-forest text-sm sm:text-base leading-tight hidden sm:block">EmpowerKids<br class="sm:hidden"> South Sudan</span>
+                    <span class="font-display font-semibold text-deep-forest text-sm sm:hidden">EK-SS</span>
                 </a>
-                <a href="#contact" class="btn-quote">Get Quote</a>
-            </div>
-
-            <div class="menu-toggle" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
+                <div class="hidden lg:flex items-center gap-1">
+                    <a href="#home" class="px-3 py-2 text-sm font-medium text-deep-forest hover:text-emerald-green transition-colors rounded-lg hover:bg-soft-bg">Home</a>
+                    <div class="relative group">
+                        <button class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-emerald-green transition-colors rounded-lg hover:bg-soft-bg flex items-center gap-1">About <svg class="w-3.5 h-3.5 opacity-60 group-hover:opacity-100" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
+                        <div class="absolute top-full left-0 mt-1 w-60 bg-white rounded-2xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 py-2">
+                            <a href="#about" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-soft-bg hover:text-emerald-green">Our Story</a>
+                            <a href="#board-leadership" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-soft-bg hover:text-emerald-green">Board & Leadership</a>
+                            <a href="#partners" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-soft-bg hover:text-emerald-green">Partners</a>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                        <button class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-emerald-green transition-colors rounded-lg hover:bg-soft-bg flex items-center gap-1">Programs <svg class="w-3.5 h-3.5 opacity-60 group-hover:opacity-100" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
+                        <div class="absolute top-full left-0 mt-1 w-60 bg-white rounded-2xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 py-2">
+                            <a href="#programs" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-soft-bg hover:text-emerald-green">Child Empowerment</a>
+                            <a href="#programs" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-soft-bg hover:text-emerald-green">Education Support</a>
+                            <a href="#featured" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-soft-bg hover:text-emerald-green">Empower Farmers SS</a>
+                            <a href="#programs" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-soft-bg hover:text-emerald-green">Youth Development</a>
+                            <a href="#programs" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-soft-bg hover:text-emerald-green">Food Security</a>
+                        </div>
+                    </div>
+                    <a href="#impact" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-emerald-green rounded-lg hover:bg-soft-bg">Impact</a>
+                    <a href="#news" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-emerald-green rounded-lg hover:bg-soft-bg">News</a>
+                    <a href="#blog" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-emerald-green rounded-lg hover:bg-soft-bg">Blog</a>
+                    <a href="#resources" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-emerald-green rounded-lg hover:bg-soft-bg">Resources</a>
+                    <a href="#get-involved" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-emerald-green rounded-lg hover:bg-soft-bg">Get Involved</a>
+                    <a href="#contact" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-emerald-green rounded-lg hover:bg-soft-bg">Contact</a>
+                </div>
+                <div class="hidden lg:block">
+                    <a href="#donate" class="btn-gold-pulse inline-flex items-center px-5 py-2.5 bg-warm-gold text-white font-semibold text-sm rounded-full shadow-lg hover:bg-yellow-600 transition">Donate Now <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+                </div>
+                <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg hover:bg-soft-bg"><svg id="menu-icon-open" class="w-6 h-6 text-deep-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg><svg id="menu-icon-close" class="w-6 h-6 text-deep-forest hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
             </div>
         </div>
+        <div id="mobile-menu" class="mobile-menu lg:hidden fixed top-0 right-0 h-full w-72 bg-white shadow-2xl z-40 overflow-y-auto">
+            <div class="pt-20 px-6 pb-8">
+                <div class="flex flex-col gap-1">
+                    <a href="#home" class="mobile-link block px-4 py-3 font-medium text-deep-forest hover:bg-soft-bg rounded-xl">Home</a>
+                    <a href="#about" class="mobile-link block px-4 py-3 font-medium text-gray-700 hover:bg-soft-bg rounded-xl">About</a>
+                    <a href="#board-leadership" class="mobile-link block px-4 py-3 font-medium text-gray-700 hover:bg-soft-bg rounded-xl pl-6">Board & Leadership</a>
+                    <p class="px-4 py-2 text-xs font-semibold text-gray-400 uppercase mt-2">Programs</p>
+                    <a href="#programs" class="mobile-link block px-4 py-3 font-medium text-gray-700 hover:bg-soft-bg rounded-xl pl-6">Child Empowerment</a>
+                    <a href="#featured" class="mobile-link block px-4 py-3 font-medium text-gray-700 hover:bg-soft-bg rounded-xl pl-6">Empower Farmers SS</a>
+                    <a href="#impact" class="mobile-link block px-4 py-3 font-medium text-gray-700 hover:bg-soft-bg rounded-xl">Impact</a>
+                    <a href="#news" class="mobile-link block px-4 py-3 font-medium text-gray-700 hover:bg-soft-bg rounded-xl">News</a>
+                    <a href="#blog" class="mobile-link block px-4 py-3 font-medium text-gray-700 hover:bg-soft-bg rounded-xl">Blog</a>
+                    <a href="#resources" class="mobile-link block px-4 py-3 font-medium text-gray-700 hover:bg-soft-bg rounded-xl">Resources</a>
+                    <a href="#contact" class="mobile-link block px-4 py-3 font-medium text-gray-700 hover:bg-soft-bg rounded-xl">Contact</a>
+                </div>
+                <div class="mt-6"><a href="#donate" class="btn-gold-pulse block text-center px-5 py-3 bg-warm-gold text-white font-semibold rounded-full">Donate Now</a></div>
+            </div>
+        </div>
+        <div id="mobile-overlay" class="fixed inset-0 bg-black/40 z-30 hidden lg:hidden"></div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-bg">
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80" alt="Luxury Interior Design">
+    <!-- ==================== HERO ==================== -->
+    <section id="home" class="relative min-h-screen flex items-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1590682680695-43b964a3ae17?w=1800&q=80" alt="South Sudan community" class="w-full h-full object-cover" loading="eager">
+            <div class="hero-overlay absolute inset-0"></div>
         </div>
-        <div class="hero-overlay"></div>
-        <div class="hero-particles">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-        </div>
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <i class="fas fa-award"></i>
-                    <span>Premium Construction & Design</span>
-                </div>
-                <h2>Building <span class="highlight">Luxury</span> Spaces That Define Your Lifestyle</h2>
-                <p>We transform visions into stunning realities with premium construction, luxury interior designs, and professional painting services across South Sudan.</p>
-                <div class="hero-buttons">
-                    <a href="tel:+211980822822" class="btn-primary">
-                        <i class="fas fa-phone-alt"></i> Call Us Now
-                    </a>
-                    <a href="#contact" class="btn-secondary">
-                        <i class="fas fa-file-alt"></i> Get Free Quote
-                    </a>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-40 w-full">
+            <div class="max-w-3xl">
+                <span class="inline-block px-4 py-1.5 bg-warm-gold/20 backdrop-blur-sm text-warm-gold text-xs sm:text-sm font-semibold rounded-full mb-6 uppercase border border-warm-gold/30">Non-Governmental Organization · South Sudan</span>
+                <h1 class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">Creating a brighter future for <span class="text-warm-gold">South Sudanese children</span> and communities.</h1>
+                <p class="text-lg sm:text-xl text-gray-200 leading-relaxed mb-8 max-w-xl">EmpowerKids-South Sudan works to improve the lives of children, youth, and vulnerable communities through education, agriculture, empowerment, and sustainable development programs.</p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#programs" class="btn-gold-pulse inline-flex items-center justify-center px-7 py-3.5 bg-warm-gold text-white font-semibold rounded-full shadow-xl hover:bg-yellow-600 transition text-base">Explore Our Programs <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+                    <a href="#donate" class="inline-flex items-center justify-center px-7 py-3.5 bg-white/15 backdrop-blur-sm text-white font-semibold rounded-full border-2 border-white/40 hover:bg-white/25 transition text-base">Support Our Mission <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></a>
                 </div>
             </div>
         </div>
-        <div class="hero-scroll">
-            <a href="#about">
-                <span>Scroll Down</span>
-                <i class="fas fa-chevron-down"></i>
-            </a>
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce"><svg class="w-8 h-8 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg></div>
+    </section>
+
+    <!-- ==================== IMPACT STATS ==================== -->
+    <section id="impact" class="relative -mt-20 z-20">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                <div class="fade-up bg-white rounded-3xl shadow-xl p-5 sm:p-7 text-center border"><div class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-deep-forest counter-value mb-1" data-target="10" data-suffix="+">0</div><p class="text-xs sm:text-sm text-gray-500">Communities Reached</p></div>
+                <div class="fade-up fade-up-delay-1 bg-white rounded-3xl shadow-xl p-5 sm:p-7 text-center border"><div class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-deep-forest counter-value mb-1" data-target="500" data-suffix="+">0</div><p class="text-xs sm:text-sm text-gray-500">Children Supported</p></div>
+                <div class="fade-up fade-up-delay-2 bg-white rounded-3xl shadow-xl p-5 sm:p-7 text-center border"><div class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-deep-forest counter-value mb-1" data-target="32" data-suffix="+">0</div><p class="text-xs sm:text-sm text-gray-500">Farmers Trained</p></div>
+                <div class="fade-up fade-up-delay-3 bg-white rounded-3xl shadow-xl p-5 sm:p-7 text-center border"><div class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-deep-forest counter-value mb-1" data-target="5" data-suffix="+">0</div><p class="text-xs sm:text-sm text-gray-500">Active Programs</p></div>
+            </div>
         </div>
     </section>
 
-    <!-- Stats Bar -->
-    <div class="stats-bar">
-        <div class="container">
-            <div class="stats-container">
-                <div class="stat-item reveal">
-                    <i class="fas fa-hard-hat"></i>
-                    <h3>150+</h3>
-                    <p>Projects Completed</p>
-                </div>
-                <div class="stat-item reveal">
-                    <i class="fas fa-users"></i>
-                    <h3>120+</h3>
-                    <p>Happy Clients</p>
-                </div>
-                <div class="stat-item reveal">
-                    <i class="fas fa-trophy"></i>
-                    <h3>10+</h3>
-                    <p>Years Experience</p>
-                </div>
-                <div class="stat-item reveal">
-                    <i class="fas fa-star"></i>
-                    <h3>100%</h3>
-                    <p>Client Satisfaction</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- About Section -->
-    <section class="section about" id="about">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-images reveal">
-                    <div class="about-img large">
-                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80" alt="Construction Team">
-                    </div>
-                    <div class="about-img">
-                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80" alt="Interior Design">
-                    </div>
-                    <div class="about-img">
-                        <img src="assets/anajubi.jpg" alt="Luxury Painting">
-                    </div>
-                    <div class="about-experience">
-                        <h3>10+</h3>
-                        <p>Years of<br>Excellence</p>
-                    </div>
-                </div>
-                <div class="about-content reveal">
-                    <div class="section-label">
-                        <span>About Our Company</span>
-                        <span></span>
-                    </div>
-                    <h2>We Build Spaces That Inspire & Elevate Living</h2>
-                    <p>Ana Junubi General Construction Company is a trusted construction and interior design company based in Juba, South Sudan, specializing in high-quality building solutions, luxury interior designs, and professional painting services.</p>
-                    <p>We are committed to delivering elegant, modern, and functional spaces that reflect our clients' vision and lifestyle. From residential homes to commercial properties, we provide construction and finishing services that combine beauty, durability, and excellence.</p>
-
-                    <div class="about-features">
-                        <div class="about-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Licensed & Certified</span>
-                        </div>
-                        <div class="about-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Expert Team</span>
-                        </div>
-                        <div class="about-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Premium Materials</span>
-                        </div>
-                        <div class="about-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>On-Time Delivery</span>
-                        </div>
-                        <div class="about-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Modern Techniques</span>
-                        </div>
-                        <div class="about-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>24/7 Support</span>
-                        </div>
-                    </div>
-
-                    <div class="about-certs">
-                        <div class="cert-item">
-                            <div class="cert-icon"><i class="fas fa-certificate"></i></div>
-                            <div class="cert-text">
-                                <h4>Fully Licensed</h4>
-                                <p>Government Registered</p>
-                            </div>
-                        </div>
-                        <div class="cert-item">
-                            <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
-                            <div class="cert-text">
-                                <h4>Insured</h4>
-                                <p>Full Project Coverage</p>
-                            </div>
-                        </div>
-                    </div>
+    <!-- ==================== ABOUT ==================== -->
+    <section id="about" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div class="fade-up image-zoom-wrapper rounded-4xl overflow-hidden shadow-2xl"><img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80" alt="Children" class="w-full h-80 lg:h-[480px] object-cover" loading="lazy"></div>
+                <div class="fade-up fade-up-delay-2">
+                    <span class="text-emerald-green font-semibold text-sm uppercase tracking-wider">Who We Are</span>
+                    <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-deep-forest mt-3 mb-6">Empowering communities.<br>Building sustainable futures.</h2>
+                    <p class="text-gray-600 leading-relaxed mb-5">EmpowerKids-South Sudan is a non-governmental organization committed to empowering children and communities through education, agriculture, youth development, and sustainable solutions. Founded with a vision of hope and resilience, we operate across <strong>Juba, Malakal, and Yambio</strong>, reaching vulnerable populations with transformative programs.</p>
+                    <p class="text-gray-600 leading-relaxed mb-8">Our flagship <strong>Empower Farmers South Sudan (EFSS)</strong> program utilizes the <em>Foundations for Farming</em> approach to promote conservation agriculture, food security, and dignified livelihoods for smallholder farmers.</p>
+                    <a href="#board-leadership" class="inline-flex items-center gap-2 text-emerald-green font-semibold hover:text-deep-forest transition-colors group">Meet our leadership <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="section services" id="services">
-        <div class="container">
-            <div class="section-header reveal">
-                <div class="section-label">
-                    <span>What We Offer</span>
-                </div>
-                <h2>Our Professional Services</h2>
-                <p>We provide a wide range of professional construction and design services tailored to your unique needs</p>
+    <!-- ==================== BOARD & LEADERSHIP (NEW) ==================== -->
+    <section id="board-leadership" class="py-20 lg:py-28 bg-soft-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-emerald-green font-semibold text-sm uppercase tracking-wider">Governance</span>
+                <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-deep-forest mt-3 mb-5">Board & Leadership</h2>
+                <p class="text-gray-600 text-lg">EmpowerKids–South Sudan is guided by a strong governance framework and led by a dedicated management team committed to delivering impact.</p>
             </div>
-            <div class="services-grid">
-                <div class="service-card reveal">
-                    <div class="service-icon"><i class="fas fa-couch"></i></div>
-                    <h3>Luxury Interior Design</h3>
-                    <p>Transform your spaces with bespoke interior designs that blend elegance, functionality, and modern aesthetics. We create environments that truly reflect your personality and style.</p>
-                    <a href="#contact" class="service-btn">Get Free Quote <i class="fas fa-arrow-right"></i></a>
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Board of Directors Card -->
+                <div class="fade-up card-hover bg-white rounded-3xl p-8 shadow-lg border border-gray-100 text-center">
+                    <div class="w-16 h-16 bg-deep-forest/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                        <svg class="w-8 h-8 text-deep-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-deep-forest mb-3">Board of Directors</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Provides strategic direction, policy oversight, and fiduciary responsibility ensuring integrity and accountability.</p>
                 </div>
-                <div class="service-card reveal">
-                    <div class="service-icon"><i class="fas fa-paint-roller"></i></div>
-                    <h3>Interior & Exterior Painting</h3>
-                    <p>Professional painting services using premium quality paints and finishes. We deliver flawless results that enhance the beauty and value of your property.</p>
-                    <a href="#contact" class="service-btn">Get Free Quote <i class="fas fa-arrow-right"></i></a>
+
+                <!-- Executive Director Card -->
+                <div class="fade-up fade-up-delay-1 card-hover bg-white rounded-3xl p-6 shadow-xl border border-warm-gold/30 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-warm-gold to-emerald-green"></div>
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-24 h-24 rounded-full overflow-hidden mb-4 border-4 border-white shadow-md">
+                            <img src="https://imace" alt="Hakim Monykuer Awuok" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'flex items-center justify-center h-full text-3xl font-bold text-deep-forest\'>HA</span>';">
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-deep-forest">Hakim Monykuer Awuok</h3>
+                        <p class="text-emerald-green font-medium text-sm mb-3">Executive Director</p>
+                        <p class="text-gray-500 text-sm leading-relaxed">A public policy and governance expert with over 12 years of experience in nonprofit leadership, driving strategic vision and operational excellence.</p>
+                    </div>
                 </div>
-                <div class="service-card reveal">
-                    <div class="service-icon"><i class="fas fa-home"></i></div>
-                    <h3>Residential Construction</h3>
-                    <p>From concept to completion, we build beautiful homes that combine modern architecture with quality craftsmanship. Your dream home is our priority.</p>
-                    <a href="#contact" class="service-btn">Get Free Quote <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="service-card reveal">
-                    <div class="service-icon"><i class="fas fa-building"></i></div>
-                    <h3>Commercial Building Projects</h3>
-                    <p>Expert commercial construction services for offices, retail spaces, and business facilities. We deliver projects on time and within budget.</p>
-                    <a href="#contact" class="service-btn">Get Free Quote <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="service-card reveal">
-                    <div class="service-icon"><i class="fas fa-tools"></i></div>
-                    <h3>Renovation & Remodeling</h3>
-                    <p>Breathe new life into your existing spaces with our comprehensive renovation services. We upgrade, modernize, and transform your property.</p>
-                    <a href="#contact" class="service-btn">Get Free Quote <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="service-card reveal">
-                    <div class="service-icon"><i class="fas fa-hard-hat"></i></div>
-                    <h3>General Construction Services</h3>
-                    <p>Complete building solutions from foundation to finishing. Our experienced teams handle every aspect of your construction project with precision.</p>
-                    <a href="#contact" class="service-btn">Get Free Quote <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="service-card reveal">
-                    <div class="service-icon"><i class="fas fa-border-all"></i></div>
-                    <h3>Ceiling & Decorative Finishing</h3>
-                    <p>Stunning ceiling designs and decorative finishes that add character and elegance to any room. We create visual masterpieces above you.</p>
-                    <a href="#contact" class="service-btn">Get Free Quote <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="service-card reveal">
-                    <div class="service-icon"><i class="fas fa-fill-drip"></i></div>
-                    <h3>Wall Design & Surface Finishing</h3>
-                    <p>Modern wall treatments and surface finishing techniques that transform plain walls into stunning features. Texture, patterns, and premium finishes.</p>
-                    <a href="#contact" class="service-btn">Get Free Quote <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="service-card reveal">
-                    <div class="service-icon"><i class="fas fa-th-large"></i></div>
-                    <h3>Flooring Installation</h3>
-                    <p>Premium flooring solutions including tiles, marble, hardwood, and more. We install floors that are beautiful, durable, and built to last.</p>
-                    <a href="#contact" class="service-btn">Get Free Quote <i class="fas fa-arrow-right"></i></a>
+
+                <!-- Advisory Committee Card -->
+                <div class="fade-up fade-up-delay-2 card-hover bg-white rounded-3xl p-8 shadow-lg border border-gray-100 text-center">
+                    <div class="w-16 h-16 bg-warm-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                        <svg class="w-8 h-8 text-warm-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-deep-forest mb-3">Advisory Committee</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Provides technical expertise and strategic guidance to strengthen program quality and organizational effectiveness.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Choose Us -->
-    <section class="section why-us" id="why-us">
-        <div class="container">
-            <div class="section-header reveal">
-                <div class="section-label">
-                    <span>Our Advantages</span>
-                </div>
-                <h2>Why Choose Ana Junubi</h2>
-                <p>Clients trust us because we deliver excellence in every project</p>
+    <!-- ==================== PROGRAMS (ORIGINAL DETAIL) ==================== -->
+    <section id="programs" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-emerald-green font-semibold text-sm uppercase tracking-wider">Our Programs</span>
+                <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-deep-forest mt-3 mb-5">What We Do</h2>
+                <p class="text-gray-600 text-lg">Comprehensive programs designed to uplift children, youth, and communities across South Sudan.</p>
             </div>
-            <div class="why-us-grid">
-                <div class="why-item reveal">
-                    <div class="why-item-icon"><i class="fas fa-users-cog"></i></div>
-                    <h3>Professional Teams</h3>
-                    <p>Experienced and skilled construction professionals dedicated to quality</p>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+                <!-- Card 1 -->
+                <div class="fade-up card-hover bg-white rounded-3xl overflow-hidden shadow-md border group">
+                    <div class="image-zoom-wrapper h-48"><img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=600&q=80" alt="Farming" class="w-full h-full object-cover" loading="lazy"></div>
+                    <div class="p-6"><span class="text-3xl mb-3 block">🌱</span><h3 class="font-display text-xl font-bold text-deep-forest mb-2">Empower Farmers SS</h3><p class="text-gray-500 text-sm leading-relaxed mb-4">Supporting farmers through conservation agriculture, training, and sustainable farming practices.</p><a href="#featured" class="text-emerald-green font-semibold text-sm hover:text-deep-forest">Learn More →</a></div>
                 </div>
-                <div class="why-item reveal">
-                    <div class="why-item-icon"><i class="fas fa-gem"></i></div>
-                    <h3>Luxury Finishing</h3>
-                    <p>Sophisticated interior finishing with premium materials and attention to detail</p>
+                <!-- Card 2 -->
+                <div class="fade-up fade-up-delay-1 card-hover bg-white rounded-3xl overflow-hidden shadow-md border group">
+                    <div class="image-zoom-wrapper h-48"><img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&q=80" alt="Education" class="w-full h-full object-cover" loading="lazy"></div>
+                    <div class="p-6"><span class="text-3xl mb-3 block">📚</span><h3 class="font-display text-xl font-bold text-deep-forest mb-2">Child Empowerment</h3><p class="text-gray-500 text-sm leading-relaxed mb-4">Creating opportunities for children through education and support programs.</p><a href="#" class="text-emerald-green font-semibold text-sm hover:text-deep-forest">Learn More →</a></div>
                 </div>
-                <div class="why-item reveal">
-                    <div class="why-item-icon"><i class="fas fa-paint-brush"></i></div>
-                    <h3>Quality Painting</h3>
-                    <p>High-quality painting solutions with flawless finishes every time</p>
+                <!-- Card 3 -->
+                <div class="fade-up fade-up-delay-2 card-hover bg-white rounded-3xl overflow-hidden shadow-md border group">
+                    <div class="image-zoom-wrapper h-48"><img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=600&q=80" alt="Youth" class="w-full h-full object-cover" loading="lazy"></div>
+                    <div class="p-6"><span class="text-3xl mb-3 block">👥</span><h3 class="font-display text-xl font-bold text-deep-forest mb-2">Youth Development</h3><p class="text-gray-500 text-sm leading-relaxed mb-4">Building skills, leadership, and opportunities for young people.</p><a href="#" class="text-emerald-green font-semibold text-sm hover:text-deep-forest">Learn More →</a></div>
                 </div>
-                <div class="why-item reveal">
-                    <div class="why-item-icon"><i class="fas fa-clipboard-check"></i></div>
-                    <h3>Reliable Execution</h3>
-                    <p>On-time project delivery with transparent communication throughout</p>
-                </div>
-                <div class="why-item reveal">
-                    <div class="why-item-icon"><i class="fas fa-search"></i></div>
-                    <h3>Attention to Detail</h3>
-                    <p>Premium workmanship with meticulous care for every finishing touch</p>
-                </div>
-                <div class="why-item reveal">
-                    <div class="why-item-icon"><i class="fas fa-rocket"></i></div>
-                    <h3>Modern Techniques</h3>
-                    <p>Latest construction methods and technology for superior results</p>
-                </div>
-                <div class="why-item reveal">
-                    <div class="why-item-icon"><i class="fas fa-hand-holding-usd"></i></div>
-                    <h3>Affordable Pricing</h3>
-                    <p>Customer-focused services with competitive and transparent pricing</p>
+                <!-- Card 4 -->
+                <div class="fade-up fade-up-delay-3 card-hover bg-white rounded-3xl overflow-hidden shadow-md border group">
+                    <div class="image-zoom-wrapper h-48"><img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=900&q=80" alt="Community" class="w-full h-full object-cover" loading="lazy"></div>
+                    <div class="p-6"><span class="text-3xl mb-3 block">🤝</span><h3 class="font-display text-xl font-bold text-deep-forest mb-2">Community Development</h3><p class="text-gray-500 text-sm leading-relaxed mb-4">Strengthening communities through capacity building and partnerships.</p><a href="#" class="text-emerald-green font-semibold text-sm hover:text-deep-forest">Learn More →</a></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section class="section projects" id="projects">
-        <div class="container">
-            <div class="section-header reveal">
-                <div class="section-label">
-                    <span>Our Portfolio</span>
-                </div>
-                <h2>Recent Projects</h2>
-                <p>Explore our latest completed projects showcasing quality and luxury</p>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card reveal">
-                    <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=80" alt="Luxury Villa Interior">
-                    <div class="project-overlay">
-                        <span>Residential</span>
-                        <h3>Luxury Villa Interior Design</h3>
-                    </div>
-                </div>
-                <div class="project-card reveal">
-                    <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80" alt="Modern Kitchen">
-                    <div class="project-overlay">
-                        <span>Interior Design</span>
-                        <h3>Modern Kitchen Renovation</h3>
-                    </div>
-                </div>
-                <div class="project-card reveal">
-                    <img src="assets/anajubi.jpg" alt="Office Space">
-                    <div class="project-overlay">
-                        <span>Commercial</span>
-                        <h3>Corporate Office Finishing</h3>
-                    </div>
-                </div>
-                <div class="project-card reveal">
-                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80" alt="Bathroom Design">
-                    <div class="project-overlay">
-                        <span>Renovation</span>
-                        <h3>Premium Bathroom Remodel</h3>
-                    </div>
-                </div>
-                <div class="project-card reveal">
-                    <img src="https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=800&q=80" alt="Living Room">
-                    <div class="project-overlay">
-                        <span>Interior</span>
-                        <h3>Elegant Living Room Design</h3>
-                    </div>
-                </div>
-                <div class="project-card reveal">
-                    <img src="https://images.unsplash.com/photo-1600585154363-67eb9e2e2099?w=800&q=80" alt="Building Exterior">
-                    <div class="project-overlay">
-                        <span>Construction</span>
-                        <h3>Modern Residential Building</h3>
-                    </div>
+    <!-- ==================== FEATURED PROJECT (ORIGINAL) ==================== -->
+    <section id="featured" class="py-20 lg:py-28 bg-soft-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-0 items-stretch rounded-4xl overflow-hidden shadow-2xl">
+                <div class="fade-up image-zoom-wrapper h-72 sm:h-96 lg:h-auto min-h-[400px]"><img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=900&q=80" alt="Demonstration farm" class="w-full h-full object-cover" loading="lazy"></div>
+                <div class="fade-up fade-up-delay-2 bg-dark-section p-8 sm:p-10 lg:p-14 flex flex-col justify-center">
+                    <span class="text-warm-gold font-semibold text-sm uppercase mb-3">Featured Program</span>
+                    <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">Empower Farmers South Sudan 🌱</h2>
+                    <p class="text-gray-300 leading-relaxed mb-4">Utilizing <strong class="text-white">Foundations for Farming</strong> to equip smallholder farmers with conservation agriculture techniques. From our Juba Demonstration Farm to community training in Bilnyang, we're building food security and restoring dignity in agriculture.</p>
+                    <ul class="space-y-3 text-gray-300 mb-8">
+                        <li class="flex items-start gap-3"><svg class="w-5 h-5 text-warm-gold flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Demonstration farm & hands-on training</li>
+                        <li class="flex items-start gap-3"><svg class="w-5 h-5 text-warm-gold flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>32+ smallholder farmers trained in Bilnyang</li>
+                        <li class="flex items-start gap-3"><svg class="w-5 h-5 text-warm-gold flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Conservation agriculture & food security</li>
+                    </ul>
+                    <a href="#" class="btn-gold-pulse inline-flex items-center self-start px-6 py-3 bg-warm-gold text-white font-semibold rounded-full shadow-lg hover:bg-yellow-600 transition">Discover Program <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Commitment Section -->
-    <section class="section commitment">
-        <div class="container">
-            <div class="section-header reveal">
-                <div class="section-label">
-                    <span>Our Promise</span>
-                </div>
-                <h2>Our Commitment</h2>
-                <p>Great construction goes beyond buildings—it creates comfort, beauty, and value</p>
+    <!-- ==================== NEWS (ORIGINAL DETAIL) ==================== -->
+    <section id="news" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
+                <div><span class="text-emerald-green font-semibold text-sm uppercase tracking-wider">News & Updates</span><h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-deep-forest mt-3">Latest From the Field</h2></div>
+                <a href="#" class="text-emerald-green font-semibold hover:text-deep-forest flex items-center gap-1">View All <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
             </div>
-            <div class="commitment-grid">
-                <div class="commitment-item reveal">
-                    <i class="fas fa-medal"></i>
-                    <h3>Excellence</h3>
-                    <p>Delivering excellence in every project</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="fade-up card-hover bg-white rounded-3xl p-6 shadow-md border"><span class="text-xs text-emerald-green font-semibold uppercase">September 2025</span><h3 class="font-display text-lg font-bold text-deep-forest mt-2 mb-3">Successful Maize Harvest at Juba Demonstration Farm</h3><p class="text-gray-500 text-sm">A moment of joy and hard work paying off — our team, casual workers, interns, and champions came together for a bountiful maize harvest, proving that "It Can Be Done."</p></div>
+                <div class="fade-up fade-up-delay-1 card-hover bg-white rounded-3xl p-6 shadow-md border"><span class="text-xs text-emerald-green font-semibold uppercase">July 2025</span><h3 class="font-display text-lg font-bold text-deep-forest mt-2 mb-3">32 Farmers Trained in Bilnyang Through Sustainable Agriculture</h3><p class="text-gray-500 text-sm">Our National Champions and interns trained smallholder farmers on the Foundations for Farming approach, equipping communities with skills for food security.</p></div>
+                <div class="fade-up fade-up-delay-2 card-hover bg-white rounded-3xl p-6 shadow-md border"><span class="text-xs text-emerald-green font-semibold uppercase">August 2025</span><h3 class="font-display text-lg font-bold text-deep-forest mt-2 mb-3">Featured LIVE on SSBC's "The Dawn Show"</h3><p class="text-gray-500 text-sm">Our Champions represented Empower Farmers South Sudan on national television, reaching audiences across the country with a message of sustainable farming and hope.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== BLOG (NEW) ==================== -->
+    <section id="blog" class="py-20 lg:py-28 bg-soft-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-emerald-green font-semibold text-sm uppercase tracking-wider">Our Blog</span>
+                <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-deep-forest mt-3 mb-5">Stories & Insights</h2>
+            </div>
+
+            <!-- Featured Post -->
+            <div class="fade-up card-hover bg-white rounded-4xl overflow-hidden shadow-xl mb-10 grid md:grid-cols-2">
+                <div class="image-zoom-wrapper h-64 md:h-auto"><img src="https://images.unsplash.com/photo-1590682680695-43b964a3ae17?w=800&q=80" alt="Farmers training" class="w-full h-full object-cover" loading="lazy"></div>
+                <div class="p-8 flex flex-col justify-center">
+                    <span class="text-xs text-warm-gold font-semibold uppercase tracking-wider">News • Announcements</span>
+                    <h3 class="font-display text-2xl font-bold text-deep-forest mt-2 mb-3">EKSS Champions and Fellows Lead Conservation Agriculture Training for 75 Smallholder Farmers</h3>
+                    <p class="text-gray-500 text-sm mb-4">In Mangala and Gumbo-Sherikat, our team extended sustainable farming knowledge to 75 new farmers, strengthening food security.</p>
+                    <div class="flex items-center gap-3 text-xs text-gray-400"><span>EKSS Communications</span><span>•</span><span>6/11/2026</span><span>•</span><span>2 min read</span></div>
                 </div>
-                <div class="commitment-item reveal">
-                    <i class="fas fa-palette"></i>
-                    <h3>Beautiful Spaces</h3>
-                    <p>Creating beautiful & functional environments</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="fade-up card-hover bg-white rounded-3xl overflow-hidden shadow-md border">
+                    <div class="image-zoom-wrapper h-48"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80" alt="CAF America" class="w-full h-full object-cover" loading="lazy"></div>
+                    <div class="p-5"><span class="text-xs text-emerald-green font-semibold uppercase">News</span><h3 class="font-display text-lg font-bold text-deep-forest mt-2 mb-2">EmpowerKids–South Sudan Secures CAF America Validation</h3><p class="text-gray-500 text-xs mb-3">Strengthening global donor confidence and transparency.</p><div class="text-xs text-gray-400">EKSS Communication • 3/12/2026</div></div>
                 </div>
-                <div class="commitment-item reveal">
-                    <i class="fas fa-award"></i>
-                    <h3>High Standards</h3>
-                    <p>Maintaining premium construction standards</p>
+                <div class="fade-up fade-up-delay-1 card-hover bg-white rounded-3xl overflow-hidden shadow-md border">
+                    <div class="image-zoom-wrapper h-48 bg-gray-200 flex items-center justify-center"><span class="text-gray-400">Image</span></div>
+                    <div class="p-5"><span class="text-xs text-emerald-green font-semibold uppercase">Update</span><h3 class="font-display text-lg font-bold text-deep-forest mt-2 mb-2">Community Engagement in Juba</h3><p class="text-gray-500 text-xs mb-3">Highlights from our recent field activities.</p><div class="text-xs text-gray-400">Admin • 12/14/2025</div></div>
                 </div>
-                <div class="commitment-item reveal">
-                    <i class="fas fa-handshake"></i>
-                    <h3>Trust & Satisfaction</h3>
-                    <p>Ensuring complete client satisfaction</p>
-                </div>
-                <div class="commitment-item reveal">
-                    <i class="fas fa-shield-alt"></i>
-                    <h3>Lasting Solutions</h3>
-                    <p>Providing reliable & durable results</p>
+                <div class="fade-up fade-up-delay-2 card-hover bg-white rounded-3xl overflow-hidden shadow-md border">
+                    <div class="image-zoom-wrapper h-48 bg-gray-200 flex items-center justify-center"><span class="text-gray-400">Image</span></div>
+                    <div class="p-5"><span class="text-xs text-emerald-green font-semibold uppercase">Story</span><h3 class="font-display text-lg font-bold text-deep-forest mt-2 mb-2">Youth Voices: Building the Future</h3><p class="text-gray-500 text-xs mb-3">Young leaders share their experiences.</p><div class="text-xs text-gray-400">Admin • 12/14/2025</div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="section contact" id="contact">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info reveal">
-                    <div class="section-label">
-                        <span>Contact Us</span>
-                    </div>
-                    <h2>Let's Build Your Dream Together</h2>
-                    <p>Whether you are planning a new construction project, luxury interior finishing, or professional painting services, Ana Junubi General Construction Company is ready to deliver excellence.</p>
+    <!-- ==================== RESOURCES (NEW) ==================== -->
+    <section id="resources" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-emerald-green font-semibold text-sm uppercase tracking-wider">Resources</span>
+                <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-deep-forest mt-3 mb-5">Transparency & Downloads</h2>
+                <p class="text-gray-600 text-lg">Transparency and accountability are central to how EmpowerKids–South Sudan works. Here you will find our key governance, policy, and reporting documents, available for download by donors, partners, and the communities we serve.</p>
+                <p class="text-gray-500 text-sm mt-3">For due-diligence enquiries, contact us at <a href="mailto:info@ekss.org" class="text-emerald-green font-semibold">info@ekss.org</a>.</p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div class="fade-up card-hover bg-soft-bg rounded-3xl p-6 border flex flex-col items-center text-center">
+                    <div class="w-14 h-14 bg-emerald-green/10 rounded-2xl flex items-center justify-center mb-4"><svg class="w-8 h-8 text-emerald-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+                    <h4 class="font-display font-bold text-deep-forest text-lg mb-2">Organizational Profile</h4>
+                    <p class="text-gray-500 text-xs mb-5">EKSS_Organizational_Profile</p>
+                    <a href="#" class="btn-gold-pulse inline-flex items-center px-5 py-2.5 bg-warm-gold text-white text-sm font-semibold rounded-full hover:bg-yellow-600">Download <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg></a>
+                </div>
+                <div class="fade-up fade-up-delay-1 card-hover bg-soft-bg rounded-3xl p-6 border flex flex-col items-center text-center">
+                    <div class="w-14 h-14 bg-deep-forest/10 rounded-2xl flex items-center justify-center mb-4"><svg class="w-8 h-8 text-deep-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+                    <h4 class="font-display font-bold text-deep-forest text-lg mb-2">One-Page Profile</h4>
+                    <p class="text-gray-500 text-xs mb-5">EKSS_Organizational_Profile_One-Page</p>
+                    <a href="#" class="btn-gold-pulse inline-flex items-center px-5 py-2.5 bg-warm-gold text-white text-sm font-semibold rounded-full hover:bg-yellow-600">Download <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg></a>
+                </div>
+                <div class="fade-up fade-up-delay-2 card-hover bg-soft-bg rounded-3xl p-6 border flex flex-col items-center text-center">
+                    <div class="w-14 h-14 bg-warm-gold/10 rounded-2xl flex items-center justify-center mb-4"><svg class="w-8 h-8 text-warm-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+                    <h4 class="font-display font-bold text-deep-forest text-lg mb-2">Theory of Change</h4>
+                    <p class="text-gray-500 text-xs mb-5">EKSS_Theory_of_Change</p>
+                    <a href="#" class="btn-gold-pulse inline-flex items-center px-5 py-2.5 bg-warm-gold text-white text-sm font-semibold rounded-full hover:bg-yellow-600">Download <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg></a>
+                </div>
+            </div>
+            <div class="text-center mt-10">
+                <a href="#contact" class="inline-flex items-center gap-2 text-emerald-green font-semibold hover:text-deep-forest transition">Need more information? Contact us <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></a>
+            </div>
+        </div>
+    </section>
 
-                    <div class="contact-details">
-                        <div class="contact-detail">
-                            <div class="contact-detail-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-detail-text">
-                                <h4>Our Location</h4>
-                                <p>Juba, South Sudan</p>
-                            </div>
-                        </div>
-                        <div class="contact-detail">
-                            <div class="contact-detail-icon">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <div class="contact-detail-text">
-                                <h4>Phone / WhatsApp</h4>
-                                <p><a href="tel:+211980822822">+211 980 822 822</a></p>
-                            </div>
-                        </div>
-                        <div class="contact-detail">
-                            <div class="contact-detail-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-detail-text">
-                                <h4>Email Address</h4>
-                                <p><a href="mailto:info@anajunubi.com">info@anajunubi.com</a></p>
-                            </div>
-                        </div>
-                        <div class="contact-detail">
-                            <div class="contact-detail-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="contact-detail-text">
-                                <h4>Working Hours</h4>
-                                <p>Monday - Saturday: 8:00 AM - 6:00 PM</p>
-                            </div>
-                        </div>
-                    </div>
+    <!-- ==================== PARTNERS ==================== -->
+    <section id="partners" class="py-16 lg:py-20 bg-soft-bg">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-emerald-green font-semibold text-sm uppercase tracking-wider">Partners</span>
+            <h2 class="font-display text-3xl sm:text-4xl font-bold text-deep-forest mt-3 mb-10">Trusted Collaborators</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+                <div class="fade-up grayscale hover:grayscale-0 transition"><span class="font-display text-deep-forest font-bold text-lg">SolarSPELL</span></div>
+                <div class="fade-up fade-up-delay-1 grayscale hover:grayscale-0 transition"><span class="font-display text-deep-forest font-bold text-lg">Arizona State University</span></div>
+                <div class="fade-up fade-up-delay-2 grayscale hover:grayscale-0 transition"><span class="font-display text-deep-forest font-bold text-sm">Promised Land Secondary School</span></div>
+                <div class="fade-up fade-up-delay-3 grayscale hover:grayscale-0 transition"><span class="font-display text-deep-forest font-bold text-lg">SSBC</span></div>
+            </div>
+        </div>
+    </section>
 
-                    <div class="contact-social">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="https://wa.me/211980822822" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    <!-- ==================== DONATION CTA ==================== -->
+    <section id="donate" class="relative py-20 lg:py-28 bg-dark-section overflow-hidden">
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-warm-gold font-semibold text-sm uppercase tracking-wider">Get Involved</span>
+            <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mt-4 mb-5">Together, we can create lasting change.</h2>
+            <p class="text-gray-300 text-lg mb-10 max-w-2xl mx-auto">Help us continue creating opportunities for children and communities across South Sudan. Every contribution makes a difference.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#" class="btn-gold-pulse inline-flex items-center justify-center px-8 py-4 bg-warm-gold text-white font-bold text-lg rounded-full shadow-2xl hover:bg-yellow-600">❤️ Donate Now</a>
+                <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 bg-white/10 text-white font-semibold rounded-full border-2 border-white/30 hover:bg-white/20">Partner With Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== GET INVOLVED ==================== -->
+    <section id="get-involved" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14"><span class="text-emerald-green font-semibold text-sm uppercase">Get Involved</span><h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-deep-forest mt-3 mb-5">Join Our Mission</h2></div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="fade-up card-hover bg-soft-bg rounded-3xl p-8 text-center"><div class="w-16 h-16 bg-warm-gold/20 rounded-2xl mx-auto mb-5">❤️</div><h3 class="font-display text-xl font-bold text-deep-forest mb-3">Donate</h3><p class="text-gray-500 text-sm">Your financial support directly funds our programs, from school supplies to farming equipment.</p></div>
+                <div class="fade-up fade-up-delay-1 card-hover bg-soft-bg rounded-3xl p-8 text-center"><div class="w-16 h-16 bg-emerald-green/20 rounded-2xl mx-auto mb-5">👥</div><h3 class="font-display text-xl font-bold text-deep-forest mb-3">Volunteer</h3><p class="text-gray-500 text-sm">Lend your time and skills to support our work on the ground in South Sudan.</p></div>
+                <div class="fade-up fade-up-delay-2 card-hover bg-soft-bg rounded-3xl p-8 text-center"><div class="w-16 h-16 bg-deep-forest/20 rounded-2xl mx-auto mb-5">🌍</div><h3 class="font-display text-xl font-bold text-deep-forest mb-3">Partner</h3><p class="text-gray-500 text-sm">Organizations and institutions can collaborate with us to scale impact.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT ==================== -->
+    <section id="contact" class="py-20 lg:py-28 bg-soft-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="fade-up">
+                    <span class="text-emerald-green font-semibold text-sm uppercase">Contact</span>
+                    <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-deep-forest mt-3 mb-6">Get in Touch</h2>
+                    <p class="text-gray-600 mb-8">We'd love to hear from you. Whether you want to partner, volunteer, donate, or simply learn more — reach out.</p>
+                    <div class="space-y-5">
+                        <div class="flex gap-3"><span class="text-emerald-green">📍</span><div><p class="font-semibold text-deep-forest">Address</p><p class="text-gray-500 text-sm">Gudele West, Block IV, Plot #477, Juba, South Sudan</p></div></div>
+                        <div class="flex gap-3"><span class="text-warm-gold">✉️</span><div><p class="font-semibold text-deep-forest">Email</p><a href="mailto:info@ekss.org" class="text-emerald-green text-sm">info@ekss.org</a></div></div>
+                        <div class="flex gap-3"><span class="text-deep-forest">📞</span><div><p class="font-semibold text-deep-forest">Phone</p><a href="tel:+211926133777" class="text-gray-500 text-sm">0926 133 777</a></div></div>
                     </div>
                 </div>
-
-                <div class="contact-form-wrapper reveal">
-                    <h3>Get a Free Quote</h3>
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="name">Full Name *</label>
-                                <input type="text" id="name" name="name" placeholder="Your full name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Phone Number *</label>
-                                <input type="tel" id="phone" name="phone" placeholder="+211 XXX XXX XXX" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input type="email" id="email" name="email" placeholder="your@email.com">
-                            </div>
-                            <div class="form-group">
-                                <label for="service">Service Needed *</label>
-                                <select id="service" name="service" required>
-                                    <option value="">Select a service</option>
-                                    <option value="interior-design">Luxury Interior Design</option>
-                                    <option value="painting">Interior & Exterior Painting</option>
-                                    <option value="residential">Residential Construction</option>
-                                    <option value="commercial">Commercial Building Projects</option>
-                                    <option value="renovation">Renovation & Remodeling</option>
-                                    <option value="general">General Construction Services</option>
-                                    <option value="ceiling">Ceiling & Decorative Finishing</option>
-                                    <option value="wall">Wall Design & Surface Finishing</option>
-                                    <option value="flooring">Flooring Installation</option>
-                                    <option value="transformation">Modern Space Transformation</option>
-                                </select>
-                            </div>
-                            <div class="form-group full">
-                                <label for="message">Project Details</label>
-                                <textarea id="message" name="message" placeholder="Tell us about your project..."></textarea>
-                            </div>
-                            <div class="form-group full form-submit">
-                                <button type="submit" class="btn-primary">
-                                    <i class="fas fa-paper-plane"></i> Submit Quote Request
-                                </button>
-                            </div>
-                        </div>
+                <div class="fade-up fade-up-delay-2 bg-white rounded-3xl shadow-lg p-7">
+                    <h3 class="font-display text-2xl font-bold text-deep-forest mb-6">Send a Message</h3>
+                    <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        <input type="text" placeholder="Full Name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-emerald-green/20 outline-none">
+                        <input type="email" placeholder="Email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-emerald-green/20 outline-none">
+                        <textarea rows="4" placeholder="Your message" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-emerald-green/20 outline-none"></textarea>
+                        <button type="submit" class="btn-gold-pulse w-full py-3.5 bg-warm-gold text-white font-semibold rounded-full">Send Message</button>
+                        <p id="form-success" class="hidden text-emerald-green text-sm text-center mt-2">✅ Message sent successfully!</p>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-about">
-                    <a href="#home" class="logo">
-                        <div class="logo-icon">AJ</div>
-                        <div class="logo-text">
-                            <h1>Ana Junubi</h1>
-                            <span>General Construction</span>
-                        </div>
+   <footer class="bg-footer-dark text-white pt-20 pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Main footer grid -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12 mb-16">
+            
+            <!-- Column 1: Logo & About -->
+            <div class="lg:col-span-2">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-10 h-10 bg-warm-gold rounded-full flex items-center justify-center flex-shrink-0">
+                        <span class="text-white font-display font-bold text-lg">EK</span>
+                    </div>
+                    <div>
+                        <span class="font-display font-semibold text-white text-base leading-tight block">EmpowerKids-South Sudan</span>
+                        <span class="text-gray-400 text-xs tracking-wide">Non‑Governmental Organization</span>
+                    </div>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed mb-6 max-w-sm">
+                    Creating a brighter future for South Sudanese children and enabling their contributions through education, agriculture, and sustainable development.
+                </p>
+                <!-- Social Icons -->
+                <div class="flex items-center gap-3">
+                    <a href="#" class="social-icon w-9 h-9 bg-white/10 hover:bg-warm-gold rounded-full flex items-center justify-center transition-colors" aria-label="Facebook">
+                        <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                     </a>
-                    <p>A trusted construction and interior design company based in Juba, South Sudan. We specialize in high-quality building solutions, luxury interior designs, and professional painting services.</p>
-                    <div class="contact-social">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="https://wa.me/211980822822" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                <div>
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#services">Our Services</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#contact">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>Our Services</h4>
-                    <ul class="footer-links">
-                        <li><a href="#services">Interior Design</a></li>
-                        <li><a href="#services">Painting Services</a></li>
-                        <li><a href="#services">Residential Construction</a></li>
-                        <li><a href="#services">Commercial Projects</a></li>
-                        <li><a href="#services">Renovation & Remodeling</a></li>
-                        <li><a href="#services">General Construction</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>Contact Info</h4>
-                    <div class="footer-contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <p>Juba, South Sudan</p>
-                    </div>
-                    <div class="footer-contact-item">
-                        <i class="fas fa-phone-alt"></i>
-                        <p><a href="tel:+211980822822">+211 980 822 822</a></p>
-                    </div>
-                    <div class="footer-contact-item">
-                        <i class="fab fa-whatsapp"></i>
-                        <p><a href="https://wa.me/211980822822">+211 980 822 822</a></p>
-                    </div>
-                    <div class="footer-contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <p><a href="mailto:info@anajunubi.com">info@anajunubi.com</a></p>
-                    </div>
-                    <div class="footer-contact-item">
-                        <i class="fas fa-clock"></i>
-                        <p>Open Now<br>Mon - Sat: 8AM - 6PM</p>
-                    </div>
+                    <a href="#" class="social-icon w-9 h-9 bg-white/10 hover:bg-warm-gold rounded-full flex items-center justify-center transition-colors" aria-label="Twitter">
+                        <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="mailto:info@ekss.org" class="social-icon w-9 h-9 bg-white/10 hover:bg-warm-gold rounded-full flex items-center justify-center transition-colors" aria-label="Email">
+                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    </a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Ana Junubi General Construction Company. All rights reserved.</p>
-                <div class="footer-bottom-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                </div>
+
+            <!-- Column 2: Programs -->
+            <div>
+                <h4 class="font-display font-bold text-white text-lg mb-5">Programs</h4>
+                <ul class="space-y-3">
+                    <li><a href="#featured" class="footer-link text-gray-400 hover:text-warm-gold text-sm transition-colors inline-block">Empower Farmers SS</a></li>
+                    <li><a href="#programs" class="footer-link text-gray-400 hover:text-warm-gold text-sm transition-colors inline-block">Child Empowerment</a></li>
+                    <li><a href="#programs" class="footer-link text-gray-400 hover:text-warm-gold text-sm transition-colors inline-block">Education Support</a></li>
+                    <li><a href="#programs" class="footer-link text-gray-400 hover:text-warm-gold text-sm transition-colors inline-block">Youth Development</a></li>
+                    <li><a href="#programs" class="footer-link text-gray-400 hover:text-warm-gold text-sm transition-colors inline-block">Food Security</a></li>
+                    <li><a href="#programs" class="footer-link text-gray-400 hover:text-warm-gold text-sm transition-colors inline-block">Community Training</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Quick Links (full navbar) -->
+            <div>
+                <h4 class="font-display font-bold text-white text-lg mb-5">Quick Links</h4>
+                <ul class="space-y-3">
+                    <li><a href="#home" class="footer-link text-gray-400 hover:text-warm-gold text-sm transition-colors inline-block">Home</a></li>
+                    <li><a href="#about" class="footer-link text-gray-400 hover:text-warm-gold text-sm transition-colors inline-block">About Us</a></li>
+                    <li><a href="#board-leadership" class="footer-link text-gray-400 hover:text-warm-gold text-sm transition-colors inline-block">Board & Leadership</a></li>
+                    <li><a href="#impact" class="footer-link text-gray-400 hover:text-warm-gold text-sm transition-colors inline-block">Impact</a></li>
+                    <li><a href="#news" class="footer-link text-gray-400 hover:text-warm-gold text-sm transition-colors inline-block">News & Updates</a></li>
+                    <li><a href="#blog" class="footer-link text-gray-400 hover:text-warm-gold text-sm transition-colors inline-block">Blog</a></li>
+                    <li><a href="#resources" class="footer-link text-gray-400 hover:text-warm-gold text-sm transition-colors inline-block">Resources</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Get Involved + Contact -->
+            <div>
+                <h4 class="font-display font-bold text-white text-lg mb-5">Get Involved</h4>
+                <ul class="space-y-3 mb-6">
+                    <li><a href="#donate" class="footer-link text-gray-400 hover:text-warm-gold text-sm transition-colors inline-block">Donate</a></li>
+                    <li><a href="#get-involved" class="footer-link text-gray-400 hover:text-warm-gold text-sm transition-colors inline-block">Volunteer</a></li>
+                    <li><a href="#contact" class="footer-link text-gray-400 hover:text-warm-gold text-sm transition-colors inline-block">Partner With Us</a></li>
+                </ul>
+
+                <h4 class="font-display font-bold text-white text-lg mb-4">Contact</h4>
+                <ul class="space-y-3 text-sm text-gray-400">
+                    <li class="flex items-start gap-2">
+                        <svg class="w-4 h-4 text-warm-gold flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+                        <span>Gudele West, Block IV, Plot #477<br>Juba, South Sudan</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <svg class="w-4 h-4 text-warm-gold flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        <a href="mailto:info@ekss.org" class="hover:text-warm-gold transition-colors">info@ekss.org</a>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <svg class="w-4 h-4 text-warm-gold flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        <a href="tel:+211926133777" class="hover:text-warm-gold transition-colors">0926 133 777</a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </footer>
+
+        <!-- Bottom bar -->
+        <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-gray-500 text-xs text-center sm:text-left">
+                &copy; <span id="current-year"></span> EmpowerKids-South Sudan. All rights reserved. | 
+                <a href="#" class="hover:text-gray-300 transition-colors">Privacy Policy</a> | 
+                <a href="#" class="hover:text-gray-300 transition-colors">Terms of Service</a>
+            </p>
+            <p class="text-gray-600 text-xs">
+                <span class="inline-block">South Sudan Registered NGO</span>
+                <span class="mx-2 hidden sm:inline">•</span>
+                <span class="inline-block">Transparency You Can Trust</span>
+            </p>
+        </div>
+    </div>
+</footer>
+
+    <button id="back-to-top" class="fixed bottom-6 right-6 z-50 w-12 h-12 bg-warm-gold text-white rounded-full shadow-xl flex items-center justify-center opacity-0 pointer-events-none transition-all hover:bg-yellow-600">↑</button>
 
     <script>
-        // ========== PRELOADER ==========
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('preloader').classList.add('hidden');
-            }, 1500);
-        });
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileOverlay = document.getElementById('mobile-overlay');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
 
-        // ========== NAVBAR SCROLL ==========
+        function openMobileMenu() { mobileMenu.classList.add('open'); mobileOverlay.classList.remove('hidden'); menuIconOpen.classList.add('hidden'); menuIconClose.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+        function closeMobileMenu() { mobileMenu.classList.remove('open'); mobileOverlay.classList.add('hidden'); menuIconOpen.classList.remove('hidden'); menuIconClose.classList.add('hidden'); document.body.style.overflow = ''; }
+        mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.contains('open') ? closeMobileMenu() : openMobileMenu());
+        mobileOverlay.addEventListener('click', closeMobileMenu);
+        mobileLinks.forEach(l => l.addEventListener('click', closeMobileMenu));
+
+        // Navbar scroll
         const navbar = document.getElementById('navbar');
-        const backToTop = document.getElementById('backToTop');
-
+        const backToTop = document.getElementById('back-to-top');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-
-            if (window.scrollY > 500) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
+            const y = window.scrollY;
+            navbar.classList.toggle('scrolled', y > 50);
+            if (y > 600) { backToTop.classList.remove('opacity-0','pointer-events-none'); backToTop.classList.add('opacity-100'); }
+            else { backToTop.classList.add('opacity-0','pointer-events-none'); backToTop.classList.remove('opacity-100'); }
         });
+        backToTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
 
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        // Fade up observer
+        const fadeObserver = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); fadeObserver.unobserve(e.target); } }) }, {threshold:0.1, rootMargin:'0px 0px -60px 0px'});
+        document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
 
-        // ========== MOBILE MENU ==========
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        const mobileOverlay = document.getElementById('mobileOverlay');
-
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            mobileOverlay.classList.toggle('active');
-            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
-        });
-
-        mobileOverlay.addEventListener('click', () => {
-            menuToggle.classList.remove('active');
-            navLinks.classList.remove('active');
-            mobileOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-
-        // Close menu on link click
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-                mobileOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
-
-        // Mobile dropdown toggle
-        if (window.innerWidth <= 768) {
-            const dropdownToggle = document.querySelector('.nav-links > li:nth-child(3) > a');
-            const dropdown = document.getElementById('dropdown');
-
-            dropdownToggle.addEventListener('click', (e) => {
-                e.preventDefault();
-                dropdown.classList.toggle('active');
-            });
-        }
-
-        // ========== ACTIVE NAV LINK ==========
-        const sections = document.querySelectorAll('section[id]');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 150;
-                if (window.scrollY >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.querySelectorAll('a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // ========== SCROLL REVEAL ==========
-        const revealElements = document.querySelectorAll('.reveal');
-
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
-
-        revealElements.forEach(el => revealObserver.observe(el));
-
-        // ========== COUNTER ANIMATION ==========
-        const counters = document.querySelectorAll('.stat-item h3');
-        let countersAnimated = false;
-
+        // Counter animation
         const counterObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting && !countersAnimated) {
-                    countersAnimated = true;
-                    counters.forEach(counter => {
-                        const target = parseInt(counter.textContent);
-                        const suffix = counter.textContent.replace(/[0-9]/g, '');
-                        let current = 0;
-                        const increment = target / 60;
-                        const timer = setInterval(() => {
-                            current += increment;
-                            if (current >= target) {
-                                counter.textContent = target + suffix;
-                                clearInterval(timer);
-                            } else {
-                                counter.textContent = Math.floor(current) + suffix;
-                            }
-                        }, 30);
-                    });
+                if(entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.dataset.target);
+                    const suffix = el.dataset.suffix || '';
+                    let start = null;
+                    function step(ts) {
+                        if(!start) start = ts;
+                        const p = Math.min((ts-start)/2000, 1);
+                        el.textContent = Math.round(p*target) + suffix;
+                        if(p<1) requestAnimationFrame(step); else el.textContent = target + suffix;
+                    }
+                    requestAnimationFrame(step);
+                    counterObserver.unobserve(el);
                 }
             });
-        }, { threshold: 0.5 });
+        }, {threshold:0.5});
+        document.querySelectorAll('.counter-value').forEach(el => counterObserver.observe(el));
 
-        const statsSection = document.querySelector('.stats-container');
-        if (statsSection) counterObserver.observe(statsSection);
-
-        // ========== FORM SUBMISSION ==========
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        // Form
+        function handleFormSubmit(e) {
             e.preventDefault();
-
-            const btn = this.querySelector('.btn-primary');
-            const originalContent = btn.innerHTML;
-
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            btn.style.opacity = '0.7';
-
+            const btn = e.target.querySelector('button[type="submit"]');
+            const orig = btn.innerHTML;
+            btn.innerHTML = 'Sending...'; btn.disabled = true;
             setTimeout(() => {
-                btn.innerHTML = '<i class="fas fa-check"></i> Quote Sent Successfully!';
-                btn.style.background = 'linear-gradient(135deg, #25d366, #128C7E)';
-                btn.style.opacity = '1';
+                document.getElementById('form-success').classList.remove('hidden');
+                btn.innerHTML = orig; btn.disabled = false;
+                e.target.reset();
+                setTimeout(() => document.getElementById('form-success').classList.add('hidden'), 4000);
+            }, 1200);
+        }
 
-                setTimeout(() => {
-                    btn.innerHTML = originalContent;
-                    btn.style.background = '';
-                    this.reset();
-                }, 3000);
-            }, 2000);
-        });
-
-        // ========== SMOOTH SCROLL FOR ANCHOR LINKS ==========
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if(href==='#') return;
+                const target = document.querySelector(href);
+                if(target) {
                     e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth' });
+                    window.scrollTo({top: target.offsetTop - navbar.offsetHeight - 10, behavior:'smooth'});
                 }
             });
         });
