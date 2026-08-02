@@ -107,6 +107,12 @@
         }
         .btn-gold-pulse:hover::after { opacity: 1; }
 
+      
+
+/* Kill the gap between top bar and navbar */
+#navbar {
+    top: 1.75rem !important;
+}
         /* Mobile menu - right based */
         #mobile-menu {
             position: fixed !important; top: 0 !important; right: -100% !important;
@@ -129,11 +135,6 @@
         #mobile-overlay.visible { opacity: 1 !important; pointer-events: auto !important; }
         body.menu-open { overflow: hidden !important; }
 
-
-        /* Kill the gap between top bar and navbar */
-#navbar {
-    top: 1.75rem !important;
-}
         /* Mobile link styles */
         .mobile-link {
             display: block; padding: 0.75rem 1rem; font-weight: 500;
@@ -165,21 +166,81 @@
             #mobile-menu { width: 85% !important; max-width: 18rem !important; }
         }
 
-        /* Results table */
+        /* Results table - mobile optimized */
         .results-table th { font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
-        .results-table td { vertical-align: top; }
+        .results-table td { vertical-align: middle; padding: 0.75rem 1rem; }
+
         @media (max-width: 640px) {
             .results-table thead { display: none; }
-            .results-table tr { display: block; margin-bottom: 1rem; border-bottom: 1px solid #e5e7eb; }
-            .results-table td { display: block; text-align: right; padding-left: 50%; position: relative; }
-            .results-table td::before { content: attr(data-label); position: absolute; left: 0; width: 45%; font-weight: 600; text-align: left; }
+            .results-table tbody tr {
+                display: block;
+                margin-bottom: 1rem;
+                border: 1px solid #e5e7eb;
+                border-radius: 1rem;
+                padding: 0.75rem;
+                background: white;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            }
+            .results-table tbody tr:hover {
+                background: white;
+                transform: none;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            }
+            .results-table td {
+                display: flex;
+                align-items: flex-start;
+                padding: 0.4rem 0.25rem;
+                border: none;
+                text-align: left;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+            }
+            .results-table td::before {
+                content: attr(data-label);
+                font-weight: 700;
+                color: #0B3D2E;
+                font-size: 0.7rem;
+                text-transform: uppercase;
+                letter-spacing: 0.04em;
+                min-width: 80px;
+                flex-shrink: 0;
+            }
+            .results-table td[data-label="Value"] {
+                font-size: 1.25rem;
+                font-weight: 800;
+                color: #0B3D2E;
+                padding-top: 0.25rem;
+                padding-bottom: 0.25rem;
+                border-bottom: 2px solid #e5e7eb;
+                margin-bottom: 0.25rem;
+            }
+            .results-table td[data-label="Value"]::before {
+                font-size: 0.7rem;
+                font-weight: 700;
+            }
+            .results-table td[data-label="Result"] {
+                font-weight: 500;
+                color: #1f2937;
+                font-size: 0.9rem;
+                line-height: 1.4;
+            }
+            .results-table td[data-label="Programme"] {
+                font-size: 0.8rem;
+                color: #159957;
+                font-weight: 600;
+            }
+            .results-table td[data-label="Verification"] {
+                font-size: 0.7rem;
+                color: #9ca3af;
+                font-style: italic;
+            }
         }
     </style>
 </head>
 <body class="bg-white text-gray-800 antialiased">
 
     <!-- ========== TOP BAR ========== -->
-    <div class="fixed top-0 left-0 w-full bg-deep-forest text-white/90 text-xs z-[60]">
+    <div class="hidden sm:block fixed top-0 left-0 w-full bg-deep-forest text-white/90 text-xs z-[60]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1.5 flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
             <span class="whitespace-nowrap">RRC Reg. No. 169</span>
             <span class="hidden sm:inline text-white/40">|</span>
@@ -196,14 +257,14 @@
     </div>
 
     <!-- ========== NAVIGATION ========== -->
-    <nav id="navbar" class="glass-nav fixed top-9 lg:top-9 left-0 w-full z-50 transition-all duration-300" style="top: 2.25rem;">
+    <nav id="navbar" class="glass-nav fixed top-0 sm:top-9 left-0 w-full z-50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 lg:h-20">
                 <a href="#home" class="flex items-center gap-2 flex-shrink-0">
-    <img src="assets/eksslogo.jpg" alt="EmpowerKids South Sudan logo" class="h-9 w-auto rounded-full object-contain" />
-    <span class="font-display font-semibold text-deep-forest text-sm sm:text-base leading-tight hidden sm:block">EmpowerKids<br class="sm:hidden"> South Sudan</span>
-    <span class="font-display font-semibold text-deep-forest text-sm sm:hidden">EK-SS</span>
-</a>
+                    <img src="assets/eksslogo.jpg" alt="EmpowerKids South Sudan logo" class="h-9 w-auto rounded-full object-contain" />
+                    <span class="font-display font-semibold text-deep-forest text-sm sm:text-base leading-tight hidden sm:block">EmpowerKids<br class="sm:hidden"> South Sudan</span>
+                    <span class="font-display font-semibold text-deep-forest text-sm sm:hidden">EK-SS</span>
+                </a>
 
                 <!-- Desktop Nav -->
                 <div class="hidden lg:flex items-center gap-1">
@@ -611,37 +672,37 @@
                     </thead>
                     <tbody class="divide-y divide-gray-100">
                         <tr class="hover:bg-soft-bg transition">
-                            <td class="px-6 py-4 font-semibold text-deep-forest" data-label="Value">37</td>
+                            <td class="px-6 py-4 font-semibold text-deep-forest text-lg" data-label="Value">37</td>
                             <td class="px-6 py-4" data-label="Result">Students placed on fully funded university scholarships through our Bridge2Rwanda partnership</td>
                             <td class="px-6 py-4" data-label="Programme">Education</td>
                             <td class="px-6 py-4 text-xs text-gray-500" data-label="Verification">B2R placement records</td>
                         </tr>
                         <tr class="hover:bg-soft-bg transition">
-                            <td class="px-6 py-4 font-semibold text-deep-forest" data-label="Value">54</td>
+                            <td class="px-6 py-4 font-semibold text-deep-forest text-lg" data-label="Value">54</td>
                             <td class="px-6 py-4" data-label="Result">Smallholder farmers and interns trained in Foundations for Farming conservation agriculture</td>
                             <td class="px-6 py-4" data-label="Programme">Empower Farmers</td>
                             <td class="px-6 py-4 text-xs text-gray-500" data-label="Verification">Training attendance registers</td>
                         </tr>
                         <tr class="hover:bg-soft-bg transition">
-                            <td class="px-6 py-4 font-semibold text-deep-forest" data-label="Value">15</td>
+                            <td class="px-6 py-4 font-semibold text-deep-forest text-lg" data-label="Value">15</td>
                             <td class="px-6 py-4" data-label="Result">Secondary school teachers trained at Arizona State University in student‑centred methods</td>
                             <td class="px-6 py-4" data-label="Programme">Education</td>
                             <td class="px-6 py-4 text-xs text-gray-500" data-label="Verification">ASU completion records</td>
                         </tr>
                         <tr class="hover:bg-soft-bg transition">
-                            <td class="px-6 py-4 font-semibold text-deep-forest" data-label="Value">632.97 kg</td>
+                            <td class="px-6 py-4 font-semibold text-deep-forest text-lg" data-label="Value">632.97 kg</td>
                             <td class="px-6 py-4" data-label="Result">Assorted vegetables and groundnuts harvested from 0.01865 ha using sack and bed methods</td>
                             <td class="px-6 py-4" data-label="Programme">Empower Farmers</td>
                             <td class="px-6 py-4 text-xs text-gray-500" data-label="Verification">Farm harvest logs</td>
                         </tr>
                         <tr class="hover:bg-soft-bg transition">
-                            <td class="px-6 py-4 font-semibold text-deep-forest" data-label="Value">2</td>
+                            <td class="px-6 py-4 font-semibold text-deep-forest text-lg" data-label="Value">2</td>
                             <td class="px-6 py-4" data-label="Result">Schools fitted with solar electricity — Juba Girls Secondary and Nimule Model Secondary</td>
                             <td class="px-6 py-4" data-label="Programme">Education</td>
                             <td class="px-6 py-4 text-xs text-gray-500" data-label="Verification">Installation handover notes</td>
                         </tr>
                         <tr class="hover:bg-soft-bg transition">
-                            <td class="px-6 py-4 font-semibold text-deep-forest" data-label="Value">3</td>
+                            <td class="px-6 py-4 font-semibold text-deep-forest text-lg" data-label="Value">3</td>
                             <td class="px-6 py-4" data-label="Result">States reached by youth peace essay competitions, with selected essays published in national press</td>
                             <td class="px-6 py-4" data-label="Programme">Youth Empowerment</td>
                             <td class="px-6 py-4 text-xs text-gray-500" data-label="Verification">Competition records & press cuttings</td>
