@@ -107,12 +107,6 @@
         }
         .btn-gold-pulse:hover::after { opacity: 1; }
 
-      
-
-/* Kill the gap between top bar and navbar */
-#navbar {
-    top: 1.75rem !important;
-}
         /* Mobile menu - right based */
         #mobile-menu {
             position: fixed !important; top: 0 !important; right: -100% !important;
@@ -257,7 +251,7 @@
     </div>
 
     <!-- ========== NAVIGATION ========== -->
-    <nav id="navbar" class="glass-nav fixed top-0 sm:top-9 left-0 w-full z-50 transition-all duration-300">
+    <nav id="navbar" class="glass-nav fixed top-0 left-0 w-full z-50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 lg:h-20">
                 <a href="#home" class="flex items-center gap-2 flex-shrink-0">
@@ -310,7 +304,7 @@
 
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="lg:hidden">
-        <div class="pt-24 px-6 pb-8">
+        <div class="pt-28 px-6 pb-8">
             <div class="flex flex-col gap-1">
                 <a href="#home" class="mobile-link">Home</a>
                 <button class="mobile-accordion-btn" data-target="aboutMobile">About <svg class="accordion-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
@@ -330,6 +324,7 @@
                 <a href="#news" class="mobile-link">News</a>
                 <a href="#blog" class="mobile-link">Blog</a>
                 <a href="#documents" class="mobile-link">Documents</a>
+                <a href="#get-involved" class="mobile-link">Get Involved</a>
                 <a href="#contact" class="mobile-link">Contact</a>
             </div>
             <div class="mt-6"><a href="#donate" class="btn-gold-pulse block text-center px-5 py-3 bg-warm-gold text-white font-semibold rounded-full">Donate</a></div>
@@ -1220,7 +1215,7 @@
                     Building a brighter future for kids. Registered with the Relief and Rehabilitation Commission under the NGO Act 2016.
                 </p>
                 <div class="flex items-center gap-3">
-                    <!-- Facebook – with your link -->
+                    <!-- Facebook -->
                     <a href="https://www.facebook.com/empowerkidssouthsudan" target="_blank" rel="noopener noreferrer" class="social-icon w-9 h-9 bg-white/10 hover:bg-[#1877F2] rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110" aria-label="Facebook">
                         <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                     </a>
@@ -1303,6 +1298,7 @@
     <!-- JavaScript -->
     <script>
         (function() {
+            // ─── DOM refs ───────────────────────────────────────────────
             const toggleBtn = document.getElementById('mobile-toggle');
             const mobileMenu = document.getElementById('mobile-menu');
             const overlay = document.getElementById('mobile-overlay');
@@ -1310,7 +1306,10 @@
             const menuCloseIcon = document.getElementById('menu-icon-close');
             const mobileLinks = mobileMenu.querySelectorAll('a');
             const body = document.body;
+            const topBar = document.querySelector('.fixed.top-0'); // Registration bar
+            const navbar = document.getElementById('navbar');
 
+            // ─── Mobile menu functions ──────────────────────────────────
             function openMenu() {
                 mobileMenu.classList.add('open');
                 overlay.classList.add('visible');
@@ -1346,8 +1345,19 @@
                 });
             });
 
-            // Navbar scroll
-            const navbar = document.getElementById('navbar');
+            // ─── Dynamic Navbar Positioning ─────────────────────────────
+            function snapNavbar() {
+                if (topBar && navbar) {
+                    const topBarVisible = topBar.offsetHeight > 0 && 
+                                          window.getComputedStyle(topBar).display !== 'none';
+                    navbar.style.top = topBarVisible ? topBar.offsetHeight + 'px' : '0px';
+                }
+            }
+            snapNavbar();
+            window.addEventListener('resize', snapNavbar);
+            window.addEventListener('load', snapNavbar);
+
+            // ─── Navbar scroll effect ──────────────────────────────────
             const backToTop = document.getElementById('back-to-top');
             window.addEventListener('scroll', () => {
                 const y = window.scrollY;
@@ -1357,13 +1367,13 @@
             });
             backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-            // Fade up observer
+            // ─── Fade up observer ───────────────────────────────────────
             const fadeObserver = new IntersectionObserver(entries => {
                 entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); fadeObserver.unobserve(entry.target); } });
             }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
             document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
 
-            // Counter animation
+            // ─── Counter animation ──────────────────────────────────────
             const counterObserver = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1383,7 +1393,7 @@
             }, { threshold: 0.5 });
             document.querySelectorAll('.counter-value').forEach(el => counterObserver.observe(el));
 
-            // Form handler
+            // ─── Form handler ───────────────────────────────────────────
             window.handleFormSubmit = function(e) {
                 e.preventDefault();
                 const btn = e.target.querySelector('button[type="submit"]');
@@ -1397,9 +1407,10 @@
                 }, 1200);
             };
 
+            // ─── Current year ───────────────────────────────────────────
             document.getElementById('current-year').textContent = new Date().getFullYear();
 
-            // Smooth scroll
+            // ─── Smooth anchor scroll (adjusted offset) ─────────────────
             document.querySelectorAll('a[href^="#"]').forEach(a => {
                 a.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
@@ -1407,13 +1418,16 @@
                     const target = document.querySelector(href);
                     if (target) {
                         e.preventDefault();
-                        const offset = navbar.offsetHeight + 60;
+                        const offset = navbar.offsetHeight + 10; // small breathing room
                         window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
                     }
                 });
             });
 
+            // ─── Init ──────────────────────────────────────────────────
             closeMenu();
+            snapNavbar(); // ensure navbar is in correct place on load
+            console.log('✅ EmpowerKids-South Sudan website ready – no gaps, no issues.');
         })();
     </script>
 </body>
